@@ -1,0 +1,741 @@
+.lesson-page {
+  position: relative;
+  z-index: 1;
+
+  min-height: 100vh;
+
+  padding: 0 7% 45px;
+
+  background: transparent;
+
+  color: #ffffff;
+}
+
+/* =========================================
+   TOP BAR
+========================================= */
+
+.lesson-topbar {
+  height: 72px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 3px;
+
+  color: #607487;
+}
+
+.lesson-topbar span:first-child {
+  color: #82d9ff;
+}
+
+/* =========================================
+   HERO
+========================================= */
+
+.lesson-hero {
+  max-width: 1100px;
+  margin: 55px auto 65px;
+
+  display: flex;
+  align-items: center;
+  gap: 55px;
+}
+.lesson-number {
+  width: 125px;
+  height: 125px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border: 1px solid rgba(130, 220, 255, 0.25);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(100, 190, 230, 0.08),
+      rgba(255, 255, 255, 0.01)
+    );
+
+  color: #8cddff;
+
+  font-size: 38px;
+  font-weight: 800;
+
+  box-shadow:
+    0 0 45px rgba(80, 200, 255, 0.06);
+
+  animation: lessonNumberFloat 4s ease-in-out infinite;
+}
+
+.lesson-kicker {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: #688094;
+}
+
+.lesson-hero h1 {
+  margin: 12px 0 20px;
+
+  font-size: clamp(45px, 7vw, 82px);
+  line-height: 0.9;
+  letter-spacing: -4px;
+}
+
+.lesson-hero h1 strong {
+  color: #8cddff;
+}
+
+.lesson-hero p {
+  max-width: 650px;
+
+  margin: 0;
+
+  font-size: 15px;
+  line-height: 1.8;
+
+  color: #8795a5;
+}
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.lesson-content {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.lesson-topic {
+  position: relative;
+
+  margin-bottom: 75px;
+  padding: 40px;
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(13, 25, 37, 0.72),
+      rgba(4, 9, 15, 0.9)
+    );
+
+  overflow: hidden;
+}
+
+.lesson-topic::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 45px;
+  height: 2px;
+
+  background: #83dcff;
+
+  box-shadow: 0 0 15px rgba(130, 220, 255, 0.5);
+}
+
+.lesson-topic > span {
+  display: block;
+
+  margin-bottom: 20px;
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 3px;
+
+  color: #6f8597;
+}
+
+.lesson-topic h2 {
+  margin: 0 0 22px;
+
+  font-size: clamp(28px, 5vw, 48px);
+  line-height: 1;
+
+  letter-spacing: -2px;
+}
+
+.lesson-topic h2 strong {
+  color: #8cddff;
+}
+
+.lesson-topic > p {
+  max-width: 760px;
+
+  margin: 0;
+
+  font-size: 14px;
+  line-height: 1.9;
+
+  color: #9aa8b7;
+}
+
+/* =========================================
+   CODE EXAMPLES
+========================================= */
+
+.example-box {
+  margin-top: 25px;
+  padding: 20px;
+
+  border-left: 2px solid rgba(130, 220, 255, 0.35);
+
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.example-label {
+  margin-bottom: 12px;
+
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 2px;
+
+  color: #617587;
+}
+
+.example-box code {
+  font-family: Consolas, monospace;
+
+  font-size: 13px;
+  line-height: 1.8;
+
+  color: #bceaff;
+}
+
+/* =========================================
+   ARRAY VISUALIZER
+========================================= */
+
+.lesson-array {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+
+  margin-top: 35px;
+
+  border: 1px solid rgba(130, 220, 255, 0.18);
+}
+
+.lesson-cell {
+  min-height: 120px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
+
+  background: rgba(255, 255, 255, 0.015);
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+.lesson-cell:last-child {
+  border-right: none;
+}
+
+.lesson-cell:hover {
+  transform: translateY(-7px);
+
+  background: rgba(100, 200, 240, 0.07);
+}
+
+.lesson-cell small {
+  margin-bottom: 12px;
+
+  font-size: 8px;
+  letter-spacing: 2px;
+
+  color: #637789;
+}
+
+.lesson-cell strong {
+  font-size: 30px;
+
+  color: #ffffff;
+}
+
+/* =========================================
+   WHY ARRAYS
+========================================= */
+
+.lesson-points {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 12px;
+
+  margin-top: 30px;
+}
+
+.lesson-points div {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  padding: 18px;
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.lesson-points strong {
+  font-size: 12px;
+
+  color: #82d9ff;
+}
+
+.lesson-points span {
+  font-size: 12px;
+
+  color: #a1adba;
+}
+
+/* =========================================
+   SUMMARY
+========================================= */
+
+.lesson-summary {
+  text-align: center;
+}
+
+.lesson-summary > p {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lesson-rule {
+  display: inline-block;
+
+  margin-top: 30px;
+  padding: 14px 20px;
+
+  border: 1px solid rgba(130, 220, 255, 0.2);
+
+  background: rgba(100, 200, 240, 0.04);
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+
+  color: #8cddff;
+}
+
+/* =========================================
+   COMPLETE LESSON
+========================================= */
+
+.lesson-complete {
+  max-width: 1000px;
+  margin: 20px auto 0;
+
+  padding: 35px 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  border: 1px solid rgba(130, 220, 255, 0.2);
+
+  background:
+    linear-gradient(
+      110deg,
+      rgba(70, 160, 210, 0.08),
+      rgba(255, 255, 255, 0.015)
+    );
+}
+
+.lesson-complete > div > span {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 3px;
+
+  color: #637789;
+}
+
+.lesson-complete h2 {
+  margin: 10px 0;
+
+  font-size: clamp(22px, 4vw, 36px);
+}
+
+.lesson-complete h2 strong {
+  color: #8cddff;
+}
+
+.lesson-complete p {
+  margin: 0;
+
+  font-size: 12px;
+  color: #788898;
+}
+
+.lesson-complete button {
+  flex-shrink: 0;
+
+  padding: 16px 24px;
+
+  border: 1px solid rgba(130, 220, 255, 0.4);
+
+  background: rgba(80, 190, 230, 0.07);
+
+  color: #8cddff;
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.lesson-complete button:hover {
+  transform: translateX(5px);
+
+  background: rgba(80, 190, 230, 0.15);
+
+  border-color: rgba(130, 220, 255, 0.8);
+
+  box-shadow: 0 0 25px rgba(100, 210, 255, 0.1);
+}
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes lessonNumberFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+  .lesson-page {
+    padding: 0 20px 60px;
+  }
+
+  .lesson-topbar {
+    font-size: 7px;
+    letter-spacing: 2px;
+  }
+
+  .lesson-hero {
+    margin: 60px auto 70px;
+
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 30px;
+  }
+
+  .lesson-number {
+    width: 85px;
+    height: 85px;
+
+    font-size: 27px;
+  }
+
+  .lesson-topic {
+    padding: 25px 20px;
+  }
+
+  .lesson-array {
+    grid-template-columns: 1fr;
+  }
+
+  .lesson-cell {
+    min-height: 90px;
+
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .lesson-cell:last-child {
+    border-bottom: none;
+  }
+
+  .lesson-points {
+    grid-template-columns: 1fr;
+  }
+
+  .lesson-complete {
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 28px 22px;
+  }
+
+  .lesson-complete button {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lesson-number {
+    animation: none;
+  }
+}
+/* =========================================================
+   ARRAYVERSE SPACE TEACHER
+   ========================================================= */
+
+.space-teacher {
+  position: fixed;
+  right: 30px;
+  bottom: 20px;
+
+  width: 300px;
+  height: 520px;
+
+  z-index: 20;
+  pointer-events: none;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  animation: teacherFloat 4s ease-in-out infinite;
+}
+
+.teacher-image {
+  position: relative;
+  z-index: 3;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+  object-position: center bottom;
+
+  filter:
+    drop-shadow(0 20px 25px rgba(0, 0, 0, 0.55))
+    drop-shadow(0 0 25px rgba(100, 210, 255, 0.12));
+
+  transform-origin: center bottom;
+
+  animation: teacherBreath 3.5s ease-in-out infinite;
+}
+
+.teacher-glow {
+  position: absolute;
+
+  left: 50%;
+  bottom: 15px;
+
+  width: 190px;
+  height: 80px;
+
+  transform: translateX(-50%);
+
+  border-radius: 50%;
+
+  background: rgba(80, 200, 255, 0.12);
+
+  filter: blur(25px);
+
+  animation: teacherGlow 3s ease-in-out infinite;
+}
+
+/* Teacher status */
+
+.teacher-status {
+  position: absolute;
+
+  top: 25px;
+  right: 0;
+
+  z-index: 10;
+
+  padding: 8px 13px;
+
+  border: 1px solid rgba(140, 220, 255, 0.3);
+
+  background: rgba(3, 10, 18, 0.88);
+
+  color: #dff8ff;
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+
+  backdrop-filter: blur(10px);
+}
+
+.teacher-status span {
+  display: inline-block;
+
+  width: 6px;
+  height: 6px;
+
+  margin-right: 7px;
+
+  border-radius: 50%;
+
+  background: #8de8ff;
+
+  box-shadow: 0 0 10px #8de8ff;
+
+  animation: teacherStatus 1.5s ease-in-out infinite;
+}
+
+/* =========================================================
+   MOVEMENT
+   ========================================================= */
+
+@keyframes teacherFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes teacherBreath {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.012);
+  }
+}
+
+@keyframes teacherGlow {
+
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: translateX(-50%) scale(0.9);
+  }
+
+  50% {
+    opacity: 0.7;
+    transform: translateX(-50%) scale(1.08);
+  }
+}
+
+@keyframes teacherStatus {
+
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1200px) {
+
+  .space-teacher {
+    right: 10px;
+    width: 240px;
+    height: 430px;
+  }
+
+}
+
+@media (max-width: 850px) {
+
+  .space-teacher {
+    display: none;
+  }
+
+}
+/* =========================================
+   3D ARRAYVERSE TEACHER
+   ========================================= */
+  .space-teacher-3d {
+  width: 120px;
+  height: 208px;
+  pointer-events: none;
+}
+
+.space-teacher-3d canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+.teacher-follow {
+  position: fixed;
+  right: 25px;
+  bottom: 20px;
+  width: 120px;
+  height: 208px;
+  z-index: 15;
+  pointer-events: none;
+}
+
+.teacher-stopped {
+  position: absolute;
+  right: 25px;
+  top: auto;
+  width: 120px;
+  height: 208px;
+  z-index: 15;
+  pointer-events: none;
+}
+
+/* Tablet */
+@media (max-width: 1100px) {
+  .space-teacher-3d {
+    width: 260px;
+    height: 450px;
+    right: 15px;
+    bottom: 10px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 800px) {
+  .space-teacher-3d {
+    width: 210px;
+    height: 370px;
+    right: 5px;
+    bottom: 5px;
+  }
+}

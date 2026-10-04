@@ -1,0 +1,2566 @@
+/* =========================================================
+   ARRAYVERSE — CYBER ARENA PRACTICE LAB
+   PREMIUM NEON / CRYSTAL CLEAR EDITION
+   ========================================================= */
+
+.practice-page {
+  position: relative;
+  z-index: 2;
+
+  min-height: 100vh;
+  padding-bottom: 60px;
+
+  color: #fff;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(0, 220, 255, 0.07),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 15% 70%,
+      rgba(255, 0, 50, 0.06),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 85% 75%,
+      rgba(255, 220, 0, 0.055),
+      transparent 28%
+    );
+}
+
+/* =========================================================
+   TOP HEADER
+   ========================================================= */
+
+.practice-header {
+  width: min(1240px, 92%);
+  margin: auto;
+
+  padding: 125px 0 48px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.practice-header-content {
+  max-width: 800px;
+}
+
+.practice-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-bottom: 18px;
+
+  color: #00f6ff;
+
+  font-size: 10px;
+  font-weight: 1000;
+  letter-spacing: 3px;
+
+  text-shadow:
+    0 0 8px #00f6ff,
+    0 0 20px rgba(0, 246, 255, 0.45);
+}
+
+.practice-tag::before {
+  content: "";
+
+  width: 8px;
+  height: 8px;
+
+  background: #ff174c;
+
+  box-shadow:
+    0 0 8px #ff174c,
+    0 0 18px #ff174c;
+
+  animation: redBeacon 0.8s infinite alternate;
+}
+
+@keyframes redBeacon {
+  from {
+    opacity: 0.3;
+    transform: scale(0.65);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.practice-header h1 {
+  margin: 0;
+
+  font-size: clamp(45px, 6vw, 82px);
+  line-height: 0.88;
+
+  font-weight: 1000;
+  letter-spacing: -4px;
+
+  color: #fff;
+
+  text-shadow:
+    4px 4px 0 rgba(0, 0, 0, 0.5),
+    0 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+.practice-header h1 span {
+  display: block;
+
+  color: transparent;
+
+  background:
+    linear-gradient(
+      90deg,
+      #00f6ff 0%,
+      #00f6ff 30%,
+      #ffe600 55%,
+      #ff174c 82%
+    );
+
+  background-size: 220% 100%;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  animation: titleFlow 4s linear infinite;
+}
+
+@keyframes titleFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 220% 50%;
+  }
+}
+
+.practice-header p {
+  max-width: 650px;
+
+  margin: 24px 0 0;
+
+  color: rgba(225, 235, 245, 0.58);
+
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* =========================================================
+   LAB ONLINE
+   ========================================================= */
+
+.practice-status {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 12px 18px;
+
+  border: 1px solid rgba(0, 246, 255, 0.4);
+
+  color: #00f6ff;
+
+  background: rgba(0, 15, 30, 0.7);
+
+  font-size: 9px;
+  font-weight: 1000;
+  letter-spacing: 2px;
+
+  box-shadow:
+    0 0 18px rgba(0, 246, 255, 0.08);
+
+  animation: statusMove 2.5s ease-in-out infinite;
+}
+
+.practice-status::before {
+  content: "";
+
+  position: absolute;
+
+  top: -1px;
+  left: 20%;
+
+  width: 60%;
+  height: 1px;
+
+  background: #ffe600;
+
+  box-shadow:
+    0 0 8px #ffe600;
+
+  animation: statusScan 2s linear infinite;
+}
+
+@keyframes statusMove {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes statusScan {
+  0% {
+    left: -20%;
+  }
+
+  100% {
+    left: 120%;
+  }
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #00ff88;
+
+  box-shadow:
+    0 0 6px #00ff88,
+    0 0 18px #00ff88;
+
+  animation: onlinePulse 0.9s infinite alternate;
+}
+
+@keyframes onlinePulse {
+  from {
+    transform: scale(0.7);
+    opacity: 0.4;
+  }
+
+  to {
+    transform: scale(1.25);
+    opacity: 1;
+  }
+}
+
+/* =========================================================
+   MAIN ARENA
+   ========================================================= */
+
+.practice-workspace {
+  width: min(1240px, 92%);
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 18px;
+
+  perspective: 1500px;
+}
+
+/* =========================================================
+   OPERATION CONSOLE
+   ========================================================= */
+
+.practice-panel {
+  position: relative;
+
+  padding: 18px;
+
+  background:
+    linear-gradient(
+      160deg,
+      rgba(4, 18, 32, 0.96),
+      rgba(10, 5, 20, 0.96)
+    );
+
+  border: 1px solid rgba(0, 246, 255, 0.22);
+
+  box-shadow:
+    12px 20px 50px rgba(0, 0, 0, 0.45),
+    inset 0 0 30px rgba(0, 246, 255, 0.025);
+
+  transform: rotateY(3deg);
+
+  transition: 0.4s ease;
+}
+
+.practice-panel:hover {
+  transform: rotateY(0deg) translateY(-3px);
+
+  border-color: rgba(0, 246, 255, 0.5);
+
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.55),
+    0 0 30px rgba(0, 246, 255, 0.06);
+}
+
+.practice-panel::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 2px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ff174c,
+      #ffe600,
+      #00f6ff
+    );
+
+  box-shadow:
+    0 0 12px #00f6ff;
+
+  animation: consoleLine 3s linear infinite;
+}
+
+@keyframes consoleLine {
+  0% {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  50% {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  51% {
+    transform-origin: right;
+  }
+
+  100% {
+    transform: scaleX(0);
+    transform-origin: right;
+  }
+}
+
+.panel-label {
+  margin-bottom: 16px;
+
+  color: rgba(210, 225, 240, 0.45);
+
+  font-size: 9px;
+  font-weight: 1000;
+  letter-spacing: 2px;
+}
+
+/* =========================================================
+   OPERATION BUTTONS
+   ========================================================= */
+
+.operation-list {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.operation-button {
+  position: relative;
+
+  width: 100%;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 0 14px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.055);
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.025),
+      rgba(0, 246, 255, 0.012)
+    );
+
+  color: rgba(220, 230, 240, 0.55);
+
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 1000;
+  letter-spacing: 1.5px;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+.operation-button::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 2px;
+  height: 100%;
+
+  background: #00f6ff;
+
+  transform: scaleY(0);
+
+  transform-origin: bottom;
+
+  transition: 0.25s ease;
+}
+
+.operation-button:hover {
+  color: #fff;
+
+  transform: translateX(5px);
+
+  border-color: rgba(0, 246, 255, 0.35);
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 246, 255, 0.08),
+      rgba(255, 0, 60, 0.035)
+    );
+
+  box-shadow:
+    0 0 20px rgba(0, 246, 255, 0.06);
+}
+
+.operation-button:hover::before {
+  transform: scaleY(1);
+}
+
+.operation-button.active {
+  color: #fff;
+
+  border-color: #00f6ff;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 246, 255, 0.13),
+      rgba(255, 230, 0, 0.04),
+      rgba(255, 23, 76, 0.06)
+    );
+
+  box-shadow:
+    inset 4px 0 0 #00f6ff,
+    0 0 20px rgba(0, 246, 255, 0.12);
+}
+
+.operation-button.active::before {
+  transform: scaleY(1);
+
+  box-shadow:
+    0 0 10px #00f6ff,
+    0 0 25px #00f6ff;
+}
+
+.operation-button.active::after {
+  content: "";
+
+  position: absolute;
+
+  right: 12px;
+
+  width: 5px;
+  height: 5px;
+
+  background: #ffe600;
+
+  box-shadow:
+    0 0 7px #ffe600,
+    0 0 15px #ffe600;
+
+  animation: activeLight 0.7s infinite alternate;
+}
+
+@keyframes activeLight {
+  from {
+    opacity: 0.3;
+    transform: scale(0.5);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+}
+
+.operation-number {
+  color: #00f6ff;
+
+  font-size: 10px;
+  font-weight: 1000;
+
+  text-shadow:
+    0 0 8px rgba(0, 246, 255, 0.7);
+}
+
+/* =========================================================
+   ARRAY COMMAND CENTER
+   ========================================================= */
+
+.array-practice-area {
+  position: relative;
+
+  min-width: 0;
+
+  padding: 28px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(5, 19, 34, 0.97),
+      rgba(11, 5, 24, 0.97)
+    );
+
+  border: 1px solid rgba(0, 246, 255, 0.22);
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.5),
+    inset 0 0 70px rgba(0, 246, 255, 0.018);
+
+  overflow: hidden;
+}
+
+/* =========================================================
+   ARENA CORNER MARKS
+   ========================================================= */
+
+.array-practice-area::before,
+.array-practice-area::after {
+  content: "";
+
+  position: absolute;
+
+  width: 45px;
+  height: 45px;
+
+  pointer-events: none;
+}
+
+.array-practice-area::before {
+  top: 0;
+  left: 0;
+
+  border-top: 2px solid #00f6ff;
+  border-left: 2px solid #00f6ff;
+
+  box-shadow:
+    -4px -4px 15px rgba(0, 246, 255, 0.25);
+}
+
+.array-practice-area::after {
+  right: 0;
+  bottom: 0;
+
+  border-right: 2px solid #ff174c;
+  border-bottom: 2px solid #ff174c;
+
+  box-shadow:
+    4px 4px 15px rgba(255, 23, 76, 0.25);
+}
+
+/* =========================================================
+   ARRAY HEADER
+   ========================================================= */
+
+.array-area-top {
+  position: relative;
+  z-index: 3;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  margin-bottom: 35px;
+}
+
+.array-label {
+  color: #00f6ff;
+
+  font-size: 9px;
+  font-weight: 1000;
+  letter-spacing: 3px;
+
+  text-shadow:
+    0 0 10px #00f6ff;
+}
+
+.array-area-top h2 {
+  margin: 8px 0 0;
+
+  color: #fff;
+
+  font-size: 29px;
+  font-weight: 1000;
+  letter-spacing: 1px;
+}
+
+.array-mode {
+  padding: 8px 14px;
+
+  color: #ffe600;
+
+  border: 1px solid rgba(255, 230, 0, 0.45);
+
+  background: rgba(255, 230, 0, 0.035);
+
+  font-size: 9px;
+  font-weight: 1000;
+  letter-spacing: 1.5px;
+
+  box-shadow:
+    0 0 15px rgba(255, 230, 0, 0.08);
+
+  animation: modeBlink 1.8s infinite alternate;
+}
+
+@keyframes modeBlink {
+  from {
+    box-shadow:
+      0 0 6px rgba(255, 230, 0, 0.04);
+  }
+
+  to {
+    box-shadow:
+      0 0 22px rgba(255, 230, 0, 0.15);
+  }
+}
+
+/* =========================================================
+   ARRAY DISPLAY
+   ========================================================= */
+
+.practice-array {
+  position: relative;
+
+  min-height: 170px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 14px;
+
+  padding: 35px 20px;
+
+  border-top: 1px solid rgba(0, 246, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 23, 76, 0.12);
+
+  overflow-x: auto;
+}
+
+/* =========================================================
+   ENERGY TRACK
+   ========================================================= */
+
+.practice-array::after {
+  content: "";
+
+  position: absolute;
+
+  left: 5%;
+  right: 5%;
+
+  bottom: 17px;
+
+  height: 2px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #ff174c,
+      #ffe600,
+      #00f6ff,
+      transparent
+    );
+
+  box-shadow:
+    0 0 8px #00f6ff,
+    0 0 18px rgba(255, 23, 76, 0.5);
+
+  animation: energyTrack 2.5s linear infinite;
+
+  pointer-events: none;
+}
+
+@keyframes energyTrack {
+  0% {
+    opacity: 0.25;
+    transform: scaleX(0.4);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+
+  100% {
+    opacity: 0.25;
+    transform: scaleX(0.4);
+  }
+}
+
+/* =========================================================
+   ARRAY NODE
+   CRYSTAL CLEAR — NO BLUR
+   ========================================================= */
+
+.array-cell {
+  position: relative;
+  z-index: 10;
+
+  width: 88px;
+  height: 88px;
+  min-width: 88px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /*
+     SOLID DARK SURFACE
+     No transparent glass.
+     No backdrop blur.
+  */
+  background: #07131f;
+
+  border: 2px solid rgba(0, 246, 255, 0.78);
+
+  /*
+     OUTER GLOW ONLY.
+     Text itself stays sharp.
+  */
+  box-shadow:
+    0 8px 18px rgba(0, 0, 0, 0.6),
+    0 0 10px rgba(0, 246, 255, 0.15);
+
+  isolation: isolate;
+
+  /*
+     IMPORTANT:
+     Removed continuous translateY animation.
+     This prevents browser text rasterization blur.
+  */
+  animation: nodePulse 1.8s ease-in-out infinite alternate;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+
+  filter: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+
+  opacity: 1;
+
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+@keyframes nodePulse {
+  0% {
+    border-color: rgba(0, 246, 255, 0.58);
+
+    box-shadow:
+      0 8px 18px rgba(0, 0, 0, 0.6),
+      0 0 8px rgba(0, 246, 255, 0.1);
+  }
+
+  100% {
+    border-color: rgba(0, 246, 255, 1);
+
+    box-shadow:
+      0 8px 18px rgba(0, 0, 0, 0.6),
+      0 0 18px rgba(0, 246, 255, 0.24);
+  }
+}
+
+/* =========================================================
+   NODE TOP LASER
+   ========================================================= */
+
+.array-cell::before {
+  content: "";
+
+  position: absolute;
+
+  top: -2px;
+  left: 8px;
+
+  width: calc(100% - 16px);
+  height: 3px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #00f6ff,
+      #ffe600,
+      #ff174c
+    );
+
+  box-shadow:
+    0 0 7px rgba(0, 246, 255, 0.65);
+
+  animation: nodeLaser 1.5s ease-in-out infinite alternate;
+
+  pointer-events: none;
+}
+
+@keyframes nodeLaser {
+  from {
+    opacity: 0.35;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* =========================================================
+   NODE HOVER
+   ========================================================= */
+
+.array-cell:hover {
+  background: #091b2a;
+
+  border-color: #ffe600;
+
+  box-shadow:
+    0 12px 25px rgba(0, 0, 0, 0.65),
+    0 0 16px rgba(0, 246, 255, 0.28),
+    0 0 30px rgba(255, 230, 0, 0.12);
+
+  animation-play-state: paused;
+}
+
+/* =========================================================
+   ARRAY CELLS — LARGE + CRISP + HIGH VISIBILITY
+   ========================================================= */
+
+.array-cell {
+  position: relative;
+  z-index: 5;
+
+  width: 94px;
+  height: 94px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  /* SOLID BACKGROUND — NO BLUR FILM */
+  background: #07131d;
+
+  border: 1px solid rgba(0, 246, 255, 0.8);
+  border-radius: 4px;
+
+  isolation: isolate;
+  overflow: hidden;
+
+  opacity: 1;
+  filter: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  mix-blend-mode: normal;
+
+  box-shadow:
+    0 0 0 1px rgba(0, 246, 255, 0.08),
+    0 8px 20px rgba(0, 0, 0, 0.45);
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+/* TOP ENERGY LINE */
+.array-cell::before {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: 7px;
+  right: 7px;
+
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    #00f6ff,
+    #b6ff00,
+    #ffe600,
+    #ff3b3b
+  );
+
+  opacity: 1;
+
+  z-index: 1;
+
+  filter: none;
+  box-shadow: none;
+
+  pointer-events: none;
+}
+
+
+/* HOVER */
+.array-cell:hover {
+  transform: translateY(-5px) scale(1.035);
+
+  border-color: #00f6ff;
+
+  box-shadow:
+    0 0 0 1px rgba(0, 246, 255, 0.25),
+    0 12px 25px rgba(0, 0, 0, 0.55),
+    0 0 18px rgba(0, 246, 255, 0.18);
+}
+
+
+/* =========================================================
+   INDEX NUMBER
+   ========================================================= */
+
+.cell-index {
+  position: relative;
+  z-index: 10;
+
+  display: block;
+
+  font-size: 17px;
+  line-height: 1;
+
+  font-weight: 900;
+
+  letter-spacing: 1px;
+
+  color: #00f6ff;
+
+  opacity: 1;
+
+  filter: none;
+  backdrop-filter: none;
+
+  /* CRISP — NO GLOW BLUR */
+  text-shadow: 0 1px 0 #000;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   ARRAY VALUE
+   ========================================================= */
+
+.cell-value {
+  position: relative;
+  z-index: 10;
+
+  display: block;
+
+  font-size: 36px;
+  line-height: 1;
+
+  font-weight: 900;
+
+  letter-spacing: 0.5px;
+
+  color: #ffffff;
+
+  opacity: 1;
+
+  filter: none;
+  backdrop-filter: none;
+
+  /* Very small shadow only — keeps number sharp */
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.9);
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+
+  pointer-events: none;
+}
+/* =========================================================
+   VALUE HOVER
+   ========================================================= */
+
+.array-cell:hover .cell-value {
+  color: #ffffff;
+
+  text-shadow:
+    0 0 1px #ffffff,
+    0 0 5px rgba(255, 230, 0, 0.45);
+}
+
+.array-cell:hover .cell-index {
+  color: #ffe600;
+
+  text-shadow:
+    0 0 1px #ffe600,
+    0 0 4px rgba(255, 230, 0, 0.5);
+}
+
+/* =========================================================
+   SEARCH TARGET
+   ========================================================= */
+
+.array-cell.search-highlight {
+  border-color: #ffe600;
+
+  background: #181707;
+
+  box-shadow:
+    0 0 12px rgba(255, 230, 0, 0.35),
+    0 0 25px rgba(255, 23, 76, 0.14);
+
+  animation: targetPulse 0.65s ease-in-out infinite alternate;
+}
+
+@keyframes targetPulse {
+  from {
+    border-color: #ffe600;
+  }
+
+  to {
+    border-color: #ff174c;
+  }
+}
+
+.array-cell.search-highlight .cell-value {
+  color: #ffe600;
+
+  text-shadow:
+    0 0 1px #ffe600,
+    0 0 5px rgba(255, 230, 0, 0.5);
+}
+
+.array-cell.search-highlight .cell-index {
+  color: #ffe600;
+
+  text-shadow:
+    0 0 1px #ffe600,
+    0 0 4px rgba(255, 230, 0, 0.5);
+}
+
+/* =========================================================
+   EMPTY ARRAY
+   ========================================================= */
+
+.empty-array {
+  color: #ff174c;
+
+  font-size: 13px;
+  font-weight: 1000;
+  letter-spacing: 3px;
+
+  text-shadow:
+    0 0 8px #ff174c;
+
+  animation: emptyWarning 0.8s infinite alternate;
+}
+
+@keyframes emptyWarning {
+  from {
+    opacity: 0.4;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* =========================================================
+   MEMORY INFO
+   ========================================================= */
+
+.array-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  margin-top: 24px;
+
+  border: 1px solid rgba(0, 246, 255, 0.1);
+
+  background: rgba(0, 0, 0, 0.22);
+}
+
+.info-item {
+  padding: 16px;
+
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+
+  transition: 0.25s ease;
+}
+
+.info-item:hover {
+  background: rgba(0, 246, 255, 0.04);
+}
+
+.info-item:last-child {
+  border-right: none;
+}
+
+.info-item span {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: rgba(190, 205, 225, 0.4);
+
+  font-size: 8px;
+  font-weight: 1000;
+  letter-spacing: 2px;
+}
+
+.info-item strong {
+  color: #00f6ff;
+
+  font-size: 14px;
+  font-weight: 1000;
+
+  text-shadow:
+    0 0 9px rgba(0, 246, 255, 0.7);
+}
+
+/* =========================================================
+   COMMAND PANEL
+   ========================================================= */
+
+.practice-controls {
+  margin-top: 25px;
+
+  padding: 22px;
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(0, 246, 255, 0.035),
+      rgba(255, 23, 76, 0.025)
+    );
+
+  box-shadow:
+    inset 0 0 25px rgba(0, 246, 255, 0.018);
+}
+
+.control-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin-bottom: 18px;
+}
+
+.control-heading span {
+  color: #fff;
+
+  font-size: 11px;
+  font-weight: 1000;
+  letter-spacing: 1.5px;
+}
+
+.control-heading small {
+  color: rgba(190, 205, 225, 0.4);
+
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+
+.control-row {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr auto;
+
+  gap: 12px;
+
+  align-items: end;
+}
+
+/* =========================================================
+   INPUT
+   ========================================================= */
+
+.input-group label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: rgba(190, 205, 225, 0.48);
+
+  font-size: 8px;
+  font-weight: 1000;
+  letter-spacing: 1.5px;
+}
+
+.input-group input {
+  width: 100%;
+  height: 45px;
+
+  box-sizing: border-box;
+
+  padding: 0 13px;
+
+  border: 1px solid rgba(0, 246, 255, 0.2);
+
+  outline: none;
+
+  background: #050c16;
+
+  color: #fff;
+
+  font-family: inherit;
+
+  font-size: 13px;
+  font-weight: 800;
+
+  transition: 0.25s ease;
+}
+
+.input-group input::placeholder {
+  color: rgba(190, 205, 225, 0.22);
+}
+
+.input-group input:hover,
+.input-group input:focus {
+  border-color: #00f6ff;
+
+  box-shadow:
+    0 0 15px rgba(0, 246, 255, 0.12),
+    inset 0 0 10px rgba(0, 246, 255, 0.025);
+}
+
+/* =========================================================
+   EXECUTE
+   ========================================================= */
+
+.execute-button {
+  position: relative;
+
+  height: 45px;
+
+  padding: 0 24px;
+
+  overflow: hidden;
+
+  border: 1px solid #00f6ff;
+
+  background:
+    linear-gradient(
+      110deg,
+      rgba(0, 246, 255, 0.15),
+      rgba(255, 230, 0, 0.07),
+      rgba(255, 23, 76, 0.12)
+    );
+
+  color: #fff;
+
+  font-family: inherit;
+
+  font-size: 10px;
+  font-weight: 1000;
+  letter-spacing: 1.4px;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 0 15px rgba(0, 246, 255, 0.1);
+
+  transition: 0.25s ease;
+}
+
+.execute-button::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -100%;
+
+  width: 70%;
+  height: 100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.35),
+      transparent
+    );
+
+  transform: skewX(-25deg);
+
+  transition: 0.5s ease;
+}
+
+.execute-button:hover::before {
+  left: 140%;
+}
+
+.execute-button:hover {
+  transform: translateY(-3px);
+
+  border-color: #ffe600;
+
+  box-shadow:
+    0 0 15px rgba(0, 246, 255, 0.3),
+    0 0 30px rgba(255, 230, 0, 0.12);
+}
+
+.execute-button:active {
+  transform: scale(0.96);
+}
+
+/* =========================================================
+   PRACTICE TIP
+   ========================================================= */
+
+.practice-tip {
+  width: min(1240px, 92%);
+
+  margin: 20px auto 0;
+
+  display: flex;
+  gap: 15px;
+
+  padding: 18px 20px;
+
+  border-left: 3px solid #ffe600;
+
+  border-top: 1px solid rgba(255, 230, 0, 0.12);
+  border-right: 1px solid rgba(255, 230, 0, 0.08);
+  border-bottom: 1px solid rgba(255, 230, 0, 0.08);
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255, 230, 0, 0.035),
+      rgba(255, 23, 76, 0.018)
+    );
+}
+
+.tip-icon {
+  color: #ffe600;
+
+  font-size: 12px;
+
+  text-shadow:
+    0 0 8px #ffe600;
+
+  animation: tipSpin 2.5s linear infinite;
+}
+
+@keyframes tipSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.practice-tip span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #ffe600;
+
+  font-size: 9px;
+  font-weight: 1000;
+  letter-spacing: 2px;
+}
+
+.practice-tip p {
+  margin: 0;
+
+  color: rgba(220, 230, 245, 0.48);
+
+  font-size: 11px;
+
+  line-height: 1.6;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .practice-header {
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding-top: 95px;
+  }
+
+  .practice-workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .practice-panel {
+    transform: none;
+  }
+
+  .operation-list {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .operation-button {
+    justify-content: center;
+  }
+
+  .operation-number {
+    display: none;
+  }
+}
+
+@media (max-width: 650px) {
+  .practice-header h1 {
+    font-size: 45px;
+  }
+
+  .array-practice-area {
+    padding: 20px;
+  }
+
+  .array-area-top {
+    flex-direction: column;
+  }
+
+  .practice-array {
+    justify-content: flex-start;
+
+    padding: 35px 12px;
+  }
+
+  .array-cell {
+    width: 75px;
+    min-width: 75px;
+    height: 75px;
+  }
+
+  .cell-value {
+    font-size: 27px;
+  }
+
+  .cell-index {
+    font-size: 14px;
+  }
+
+  .array-info {
+    grid-template-columns: 1fr;
+  }
+
+  .info-item {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .info-item:last-child {
+    border-bottom: none;
+  }
+
+  .operation-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .control-row {
+    grid-template-columns: 1fr;
+  }
+
+  .control-row > div:empty {
+    display: none;
+  }
+
+  .execute-button {
+    width: 100%;
+  }
+
+  .control-heading {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+/* =========================================================
+   SORT ORDER DROPDOWN
+   ========================================================= */
+
+.input-group select {
+  width: 100%;
+  min-width: 190px;
+  height: 48px;
+
+  padding: 0 42px 0 15px;
+
+  background: #07131d;
+  color: #ffffff;
+
+  border: 1px solid rgba(0, 246, 255, 0.45);
+  border-radius: 3px;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1px;
+
+  outline: none;
+  cursor: pointer;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  background-image:
+    linear-gradient(45deg, transparent 50%, #00f6ff 50%),
+    linear-gradient(135deg, #00f6ff 50%, transparent 50%);
+  background-position:
+    calc(100% - 19px) 20px,
+    calc(100% - 13px) 20px;
+  background-size:
+    6px 6px,
+    6px 6px;
+  background-repeat: no-repeat;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.input-group select:hover {
+  border-color: #00f6ff;
+
+  box-shadow:
+    0 0 12px rgba(0, 246, 255, 0.15);
+}
+
+.input-group select:focus {
+  border-color: #ffe600;
+
+  box-shadow:
+    0 0 14px rgba(255, 230, 0, 0.18);
+}
+
+.input-group select option {
+  background: #07131d;
+  color: #ffffff;
+
+  font-weight: 800;
+}
+/* =========================================================
+   ARRAYVERSE // OPERATION ANIMATION SYSTEM
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   GLOBAL ANIMATION STATE
+   --------------------------------------------------------- */
+
+.practice-array {
+  position: relative;
+  perspective: 1200px;
+}
+
+/* Keep every cell crisp during animation */
+.practice-array .array-cell {
+  will-change: transform, opacity;
+  transform-style: preserve-3d;
+}
+
+
+/* =========================================================
+   INSERTION ANIMATION
+   Elements enter from the side and settle into position
+   ========================================================= */
+
+.practice-array.animation-insert .array-cell {
+  animation:
+    insertCellIn 0.75s cubic-bezier(0.2, 0.8, 0.2, 1)
+    var(--cell-delay)
+    both;
+}
+
+@keyframes insertCellIn {
+  0% {
+    opacity: 0;
+    transform:
+      translateX(-55px)
+      translateY(8px)
+      scale(0.78)
+      rotateY(-18deg);
+  }
+
+  55% {
+    opacity: 1;
+    transform:
+      translateX(10px)
+      translateY(-5px)
+      scale(1.04)
+      rotateY(4deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform:
+      translateX(0)
+      translateY(0)
+      scale(1)
+      rotateY(0);
+  }
+}
+
+
+/* Newly inserted element gets a stronger pulse */
+.practice-array.animation-insert .array-cell:nth-child(1) {
+  animation-delay: 80ms;
+}
+
+.practice-array.animation-insert .array-cell:nth-child(2) {
+  animation-delay: 140ms;
+}
+
+.practice-array.animation-insert .array-cell:nth-child(3) {
+  animation-delay: 200ms;
+}
+
+.practice-array.animation-insert .array-cell:nth-child(4) {
+  animation-delay: 260ms;
+}
+
+.practice-array.animation-insert .array-cell:nth-child(5) {
+  animation-delay: 320ms;
+}
+
+.practice-array.animation-insert .array-cell:nth-child(6) {
+  animation-delay: 380ms;
+}
+
+
+/* =========================================================
+   DELETE ANIMATION
+   Cells collapse inward / disappear
+   ========================================================= */
+
+.practice-array.animation-delete .array-cell {
+  animation:
+    deleteCellOut 0.78s cubic-bezier(0.4, 0, 0.2, 1)
+    both;
+}
+
+@keyframes deleteCellOut {
+  0% {
+    opacity: 1;
+    transform:
+      translateX(0)
+      scale(1);
+  }
+
+  35% {
+    transform:
+      translateX(-10px)
+      scale(0.94);
+  }
+
+  70% {
+    opacity: 0.55;
+    transform:
+      translateX(25px)
+      scale(0.84);
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      translateX(65px)
+      scale(0.65);
+  }
+}
+
+
+/* =========================================================
+   UPDATE ANIMATION
+   Cell flips like a digital memory replacement
+   ========================================================= */
+
+.practice-array.animation-update .array-cell {
+  animation:
+    updateCell 0.82s cubic-bezier(0.2, 0.75, 0.25, 1)
+    both;
+}
+
+@keyframes updateCell {
+  0% {
+    transform:
+      rotateX(0deg)
+      scale(1);
+    filter: brightness(1);
+  }
+
+  25% {
+    transform:
+      rotateX(-18deg)
+      scale(1.05);
+  }
+
+  50% {
+    transform:
+      rotateX(90deg)
+      scale(1.08);
+    filter: brightness(1.8);
+  }
+
+  70% {
+    transform:
+      rotateX(165deg)
+      scale(1.05);
+  }
+
+  100% {
+    transform:
+      rotateX(360deg)
+      scale(1);
+    filter: brightness(1);
+  }
+}
+
+
+/* Yellow memory pulse */
+.practice-array.animation-update .array-cell::before {
+  animation: updateLaser 0.8s ease-in-out both;
+}
+
+@keyframes updateLaser {
+  0% {
+    opacity: 0.5;
+  }
+
+  45% {
+    opacity: 1;
+    transform: scaleX(1.2);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+
+/* =========================================================
+   SEARCH ANIMATION
+   One cell at a time gets scanned
+   ========================================================= */
+
+.practice-array.animation-search .array-cell {
+  animation:
+    searchScan 0.42s ease-in-out;
+}
+
+@keyframes searchScan {
+  0% {
+    transform: translateY(0) scale(1);
+    border-color: rgba(0, 246, 255, 0.45);
+  }
+
+  45% {
+    transform: translateY(-9px) scale(1.05);
+
+    border-color: #00f6ff;
+
+    box-shadow:
+      0 0 0 1px rgba(0, 246, 255, 0.3),
+      0 0 18px rgba(0, 246, 255, 0.25);
+  }
+
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+/* Search target */
+.practice-array.animation-search .search-highlight {
+  border-color: #ffe600;
+
+  background: #171605;
+
+  animation:
+    searchTarget 0.55s ease-in-out infinite alternate;
+}
+
+@keyframes searchTarget {
+  from {
+    transform: translateY(-2px) scale(1);
+    box-shadow:
+      0 0 0 1px rgba(255, 230, 0, 0.35),
+      0 0 12px rgba(255, 230, 0, 0.25);
+  }
+
+  to {
+    transform: translateY(-7px) scale(1.06);
+    box-shadow:
+      0 0 0 2px rgba(255, 230, 0, 0.45),
+      0 0 25px rgba(255, 230, 0, 0.42);
+  }
+}
+
+
+/* =========================================================
+   SORT ANIMATION
+   Array feels like elements are being rearranged
+   ========================================================= */
+
+.practice-array.animation-sort .array-cell {
+  animation:
+    sortCell 1.05s cubic-bezier(0.25, 0.8, 0.25, 1)
+    var(--cell-delay)
+    both;
+}
+
+@keyframes sortCell {
+  0% {
+    opacity: 0.65;
+    transform:
+      translateY(0)
+      rotateX(0deg)
+      scale(0.94);
+  }
+
+  20% {
+    opacity: 1;
+    transform:
+      translateY(-16px)
+      rotateX(-8deg)
+      scale(1.06);
+  }
+
+  48% {
+    transform:
+      translateY(7px)
+      rotateX(6deg)
+      scale(0.98);
+  }
+
+  72% {
+    transform:
+      translateY(-5px)
+      rotateX(-3deg)
+      scale(1.03);
+  }
+
+  100% {
+    opacity: 1;
+    transform:
+      translateY(0)
+      rotateX(0)
+      scale(1);
+  }
+}
+
+
+/* Moving scanner line during sorting */
+.practice-array.animation-sort::before {
+  content: "";
+
+  position: absolute;
+
+  top: 15px;
+  bottom: 15px;
+
+  left: 0;
+
+  width: 3px;
+
+  z-index: 20;
+
+  background: linear-gradient(
+    180deg,
+    transparent,
+    #00f6ff,
+    #ffe600,
+    transparent
+  );
+
+  box-shadow:
+    0 0 12px rgba(0, 246, 255, 0.7);
+
+  animation: sortScanner 1.05s linear;
+  pointer-events: none;
+}
+
+@keyframes sortScanner {
+  0% {
+    left: 3%;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    left: 97%;
+    opacity: 0;
+  }
+}
+
+
+/* =========================================================
+   REVERSE ANIMATION
+   Cells rotate around their vertical axis
+   ========================================================= */
+
+.practice-array.animation-reverse .array-cell {
+  animation:
+    reverseCell 1.05s cubic-bezier(0.2, 0.8, 0.2, 1)
+    var(--cell-delay)
+    both;
+}
+
+@keyframes reverseCell {
+  0% {
+    transform:
+      translateX(0)
+      rotateY(0deg)
+      scale(1);
+  }
+
+  30% {
+    transform:
+      translateY(-13px)
+      rotateY(90deg)
+      scale(1.08);
+  }
+
+  55% {
+    transform:
+      translateY(-5px)
+      rotateY(180deg)
+      scale(0.94);
+  }
+
+  75% {
+    transform:
+      translateY(3px)
+      rotateY(270deg)
+      scale(1.04);
+  }
+
+  100% {
+    transform:
+      translateX(0)
+      rotateY(360deg)
+      scale(1);
+  }
+}
+
+
+/* =========================================================
+   OPERATION RUNNING STATE
+   ========================================================= */
+
+.practice-array[class*="animation-"] {
+  pointer-events: none;
+}
+
+.practice-page:has(.practice-array[class*="animation-"]) .execute-button {
+  cursor: wait;
+}
+
+
+/* =========================================================
+   LOGIC REASONING POPUP
+   ========================================================= */
+
+.reason-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 9999;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 25px;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(0, 246, 255, 0.08),
+      rgba(2, 5, 14, 0.82) 45%,
+      rgba(2, 5, 14, 0.96)
+    );
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  animation: reasonOverlayIn 0.3s ease both;
+}
+
+@keyframes reasonOverlayIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+/* =========================================================
+   REASON CARD
+   ========================================================= */
+
+.reason-card {
+  position: relative;
+
+  width: min(650px, 94vw);
+
+  max-height: 88vh;
+
+  overflow-y: auto;
+
+  padding: 30px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(8, 20, 31, 0.98),
+      rgba(5, 10, 21, 0.99)
+    );
+
+  border: 1px solid rgba(0, 246, 255, 0.35);
+
+  border-radius: 8px;
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.75),
+    0 0 40px rgba(0, 246, 255, 0.08);
+
+  animation:
+    reasonCardIn
+    0.5s
+    cubic-bezier(0.2, 0.85, 0.2, 1)
+    both;
+}
+
+@keyframes reasonCardIn {
+  0% {
+    opacity: 0;
+
+    transform:
+      translateY(35px)
+      scale(0.88)
+      rotateX(10deg);
+  }
+
+  70% {
+    opacity: 1;
+
+    transform:
+      translateY(-4px)
+      scale(1.015)
+      rotateX(0);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1)
+      rotateX(0);
+  }
+}
+
+
+/* =========================================================
+   CARD TOP
+   ========================================================= */
+
+.reason-card-top {
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  padding-right: 35px;
+}
+
+.reason-icon {
+  width: 58px;
+  height: 58px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(0, 246, 255, 0.5);
+
+  border-radius: 6px;
+
+  background: rgba(0, 246, 255, 0.06);
+
+  color: #00f6ff;
+
+  font-size: 28px;
+  font-weight: 900;
+
+  box-shadow:
+    inset 0 0 18px rgba(0, 246, 255, 0.04),
+    0 0 18px rgba(0, 246, 255, 0.08);
+}
+
+.reason-kicker {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: rgba(0, 246, 255, 0.65);
+
+  font-size: 9px;
+
+  font-weight: 900;
+
+  letter-spacing: 2.5px;
+}
+
+.reason-card h3 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 23px;
+
+  font-weight: 900;
+
+  letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   CLOSE
+   ========================================================= */
+
+.reason-close {
+  position: absolute;
+
+  top: 18px;
+  right: 18px;
+
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  border-radius: 4px;
+
+  background: rgba(255, 255, 255, 0.03);
+
+  color: rgba(255, 255, 255, 0.65);
+
+  font-size: 22px;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.reason-close:hover {
+  color: #ffffff;
+
+  border-color: #ff3b3b;
+
+  background: rgba(255, 59, 59, 0.08);
+}
+
+
+/* =========================================================
+   OPERATION LABEL
+   ========================================================= */
+
+.reason-operation {
+  margin-top: 22px;
+
+  padding: 13px 15px;
+
+  border-left: 2px solid #00f6ff;
+
+  background: rgba(0, 246, 255, 0.045);
+
+  color: #ffffff;
+
+  font-size: 13px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.6px;
+}
+
+
+/* =========================================================
+   DIVIDER
+   ========================================================= */
+
+.reason-divider {
+  height: 1px;
+
+  margin: 22px 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 246, 255, 0.45),
+      rgba(255, 230, 0, 0.15),
+      transparent
+    );
+}
+
+
+/* =========================================================
+   REASON SECTIONS
+   ========================================================= */
+
+.reason-section {
+  margin-top: 20px;
+}
+
+.reason-label {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: #00f6ff;
+
+  font-size: 9px;
+
+  font-weight: 900;
+
+  letter-spacing: 2px;
+}
+
+.reason-section > p {
+  margin: 0;
+
+  color: rgba(235, 242, 250, 0.78);
+
+  font-size: 13px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   LOGIC TRACE
+   ========================================================= */
+
+.reason-steps {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.reason-step {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 12px;
+
+  padding: 10px 12px;
+
+  background: rgba(255, 255, 255, 0.025);
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.reason-step:hover {
+  transform: translateX(4px);
+
+  border-color: rgba(0, 246, 255, 0.25);
+}
+
+.reason-step > span {
+  flex-shrink: 0;
+
+  color: #ffe600;
+
+  font-size: 10px;
+
+  font-weight: 900;
+
+  letter-spacing: 1px;
+}
+
+.reason-step p {
+  margin: 0;
+
+  color: rgba(235, 242, 250, 0.7);
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   BEFORE / AFTER
+   ========================================================= */
+
+.reason-result {
+  display: grid;
+
+  grid-template-columns: 1fr auto 1fr;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-top: 20px;
+
+  padding: 16px;
+
+  background: rgba(255, 230, 0, 0.025);
+
+  border: 1px solid rgba(255, 230, 0, 0.12);
+}
+
+.reason-result div {
+  min-width: 0;
+}
+
+.reason-result small {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: rgba(255, 255, 255, 0.35);
+
+  font-size: 8px;
+
+  font-weight: 900;
+
+  letter-spacing: 1.5px;
+}
+
+.reason-result strong {
+  display: block;
+
+  overflow-wrap: anywhere;
+
+  color: #ffffff;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+.result-arrow {
+  color: #ffe600;
+
+  font-size: 22px;
+
+  font-weight: 900;
+}
+
+
+/* =========================================================
+   UNDERSTOOD BUTTON
+   ========================================================= */
+
+.reason-continue {
+  width: 100%;
+
+  margin-top: 24px;
+
+  min-height: 46px;
+
+  border: 1px solid rgba(0, 246, 255, 0.45);
+
+  border-radius: 3px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 246, 255, 0.08),
+      rgba(0, 246, 255, 0.02)
+    );
+
+  color: #00f6ff;
+
+  font-size: 11px;
+
+  font-weight: 900;
+
+  letter-spacing: 2px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.reason-continue:hover {
+  transform: translateY(-2px);
+
+  border-color: #00f6ff;
+
+  background: rgba(0, 246, 255, 0.12);
+
+  box-shadow:
+    0 0 20px rgba(0, 246, 255, 0.12);
+}
+
+
+/* =========================================================
+   POPUP ACCENT VARIATIONS
+   ========================================================= */
+
+.reason-red {
+  border-color: rgba(255, 59, 59, 0.4);
+}
+
+.reason-red .reason-icon {
+  color: #ff4b4b;
+
+  border-color: rgba(255, 59, 59, 0.45);
+
+  background: rgba(255, 59, 59, 0.06);
+}
+
+.reason-red .reason-operation {
+  border-left-color: #ff3b3b;
+}
+
+.reason-yellow {
+  border-color: rgba(255, 230, 0, 0.38);
+}
+
+.reason-yellow .reason-icon {
+  color: #ffe600;
+
+  border-color: rgba(255, 230, 0, 0.45);
+
+  background: rgba(255, 230, 0, 0.05);
+}
+
+.reason-yellow .reason-operation {
+  border-left-color: #ffe600;
+}
+
+.reason-cyan {
+  border-color: rgba(0, 246, 255, 0.4);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+  .reason-overlay {
+    padding: 14px;
+  }
+
+  .reason-card {
+    width: 100%;
+
+    padding: 22px;
+
+    max-height: 90vh;
+  }
+
+  .reason-card h3 {
+    font-size: 19px;
+  }
+
+  .reason-icon {
+    width: 48px;
+    height: 48px;
+
+    font-size: 22px;
+  }
+
+  .reason-result {
+    grid-template-columns: 1fr;
+  }
+
+  .result-arrow {
+    transform: rotate(90deg);
+
+    justify-self: center;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .practice-array .array-cell,
+  .reason-overlay,
+  .reason-card,
+  .practice-array::before,
+  .practice-array::after {
+    animation: none !important;
+
+    transition: none !important;
+  }
+}

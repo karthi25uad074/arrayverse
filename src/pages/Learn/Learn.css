@@ -1,0 +1,1047 @@
+.learn-page {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  padding: 150px 7% 100px;
+  color: #f5f8ff;
+}
+
+/* ================================
+   HEADER
+================================ */
+
+.learn-header {
+  max-width: 900px;
+  margin-bottom: 75px;
+}
+
+.learn-header > span {
+  display: inline-block;
+  margin-bottom: 20px;
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #7ddcff;
+}
+
+.learn-header h1 {
+  margin: 0;
+
+  font-size: clamp(48px, 7vw, 92px);
+  line-height: 0.95;
+  letter-spacing: -3px;
+  font-weight: 800;
+
+  color: #ffffff;
+}
+
+.learn-header h1 strong {
+  display: block;
+  color: #8bdcff;
+
+  text-shadow:
+    0 0 25px rgba(80, 210, 255, 0.2);
+}
+
+.learn-header p {
+  margin-top: 28px;
+
+  max-width: 650px;
+
+  font-size: 16px;
+  line-height: 1.8;
+  color: #8996aa;
+}
+
+/* ================================
+   SECTION HEADER
+================================ */
+
+.concept-section-top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  margin-bottom: 35px;
+
+  border-bottom: 1px solid rgba(130, 190, 220, 0.12);
+  padding-bottom: 22px;
+}
+
+.concept-section-top > div:first-child > span {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: #66788c;
+}
+
+.concept-section-top h2 {
+  margin: 8px 0 0;
+
+  font-size: clamp(25px, 3vw, 38px);
+  letter-spacing: -1px;
+
+  color: #ffffff;
+}
+
+.concept-section-top h2 strong {
+  color: #80d9ff;
+}
+
+.concept-count {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.concept-count strong {
+  font-size: 30px;
+  color: #ffffff;
+}
+
+.concept-count span {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #66788c;
+}
+
+/* ================================
+   CARD GRID
+================================ */
+
+.concept-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 18px;
+}
+
+/* ================================
+   CONCEPT CARD
+================================ */
+
+.concept-card {
+  position: relative;
+
+  min-height: 280px;
+
+  padding: 24px;
+
+  border: 1px solid rgba(130, 190, 220, 0.13);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.035),
+      rgba(10, 25, 40, 0.25)
+    );
+
+  overflow: hidden;
+
+  transform-style: preserve-3d;
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    background 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+/* subtle grid inside card */
+
+.concept-card::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(130, 210, 240, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(130, 210, 240, 0.035) 1px,
+      transparent 1px
+    );
+
+  background-size: 25px 25px;
+
+  opacity: 0.35;
+
+  pointer-events: none;
+}
+
+/* top energy line */
+
+.concept-card::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -100%;
+
+  width: 100%;
+  height: 1px;
+
+  background: #80d9ff;
+
+  opacity: 0;
+
+  transition: left 0.5s ease;
+}
+
+.concept-card:hover {
+  transform:
+    perspective(900px)
+    rotateX(2deg)
+    rotateY(-2deg)
+    translateY(-8px);
+
+  border-color: rgba(110, 215, 255, 0.35);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(100, 190, 230, 0.07),
+      rgba(10, 25, 40, 0.35)
+    );
+
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.35),
+    0 0 35px rgba(70, 190, 240, 0.06);
+}
+
+.concept-card:hover::after {
+  left: 100%;
+  opacity: 0.7;
+}
+
+/* ================================
+   CARD TOP
+================================ */
+
+.concept-top {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.concept-number {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+
+  color: #66788c;
+}
+
+.concept-status {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+
+  color: #566575;
+}
+
+.concept-status.ready {
+  color: #78d9ff;
+}
+
+/* ================================
+   ICON
+================================ */
+
+.concept-icon {
+  position: relative;
+  z-index: 1;
+
+  width: 48px;
+  height: 48px;
+
+  margin-top: 35px;
+
+  border: 1px solid rgba(120, 210, 245, 0.25);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transform: rotate(45deg);
+
+  transition:
+    transform 0.4s ease,
+    border-color 0.4s ease;
+}
+
+.concept-card:hover .concept-icon {
+  transform: rotate(135deg) scale(1.08);
+
+  border-color: rgba(120, 220, 255, 0.65);
+}
+
+.concept-icon span {
+  width: 12px;
+  height: 12px;
+
+  border: 1px solid #82dcff;
+
+  transform: rotate(-45deg);
+
+  box-shadow:
+    0 0 12px rgba(100, 215, 255, 0.3);
+}
+
+/* ================================
+   CARD CONTENT
+================================ */
+
+.concept-card h3 {
+  position: relative;
+  z-index: 1;
+
+  margin: 28px 0 10px;
+
+  font-size: 18px;
+  letter-spacing: 1px;
+
+  color: #ffffff;
+}
+
+.concept-card p {
+  position: relative;
+  z-index: 1;
+
+  margin: 0;
+
+  max-width: 300px;
+
+  font-size: 13px;
+  line-height: 1.7;
+
+  color: #778697;
+}
+
+/* ================================
+   CARD BOTTOM
+================================ */
+
+.concept-bottom {
+  position: absolute;
+
+  left: 24px;
+  right: 24px;
+  bottom: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-top: 15px;
+
+  border-top: 1px solid rgba(130, 190, 220, 0.1);
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+
+  color: #627487;
+}
+
+.concept-arrow {
+  font-size: 18px;
+  color: #80d9ff;
+
+  transition:
+    transform 0.3s ease;
+}
+
+.concept-card:hover .concept-arrow {
+  transform: translateX(7px);
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 1000px) {
+  .concept-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .learn-page {
+    padding: 120px 6% 70px;
+  }
+
+  .learn-header {
+    margin-bottom: 55px;
+  }
+
+  .learn-header h1 {
+    font-size: 48px;
+    letter-spacing: -2px;
+  }
+
+  .learn-header p {
+    font-size: 14px;
+  }
+
+  .concept-section-top {
+    align-items: flex-start;
+  }
+
+  .concept-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .concept-card {
+    min-height: 260px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .concept-card,
+  .concept-icon,
+  .concept-arrow {
+    transition: none;
+  }
+}
+/* =========================================
+   LESSON VIEWER
+========================================= */
+
+.lesson-overlay {
+  position: fixed;
+  inset: 0;
+
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 30px;
+
+  background: rgba(0, 4, 10, 0.78);
+
+  backdrop-filter: blur(12px);
+
+  animation: lessonOverlayIn 0.25s ease forwards;
+}
+
+.lesson-viewer {
+  position: relative;
+
+  width: min(720px, 100%);
+
+  padding: 45px;
+
+  border: 1px solid rgba(125, 220, 255, 0.28);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(13, 25, 38, 0.97),
+      rgba(3, 9, 17, 0.98)
+    );
+
+  box-shadow:
+    0 30px 100px rgba(0, 0, 0, 0.75),
+    0 0 60px rgba(80, 200, 255, 0.08);
+
+  transform:
+    perspective(1000px)
+    rotateX(2deg);
+
+  animation: lessonViewerIn 0.35s ease forwards;
+
+  overflow: hidden;
+}
+
+/* futuristic top line */
+
+.lesson-viewer::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #80d9ff,
+    transparent
+  );
+
+  box-shadow:
+    0 0 15px rgba(128, 217, 255, 0.5);
+}
+
+/* subtle grid */
+
+.lesson-viewer::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(130, 210, 240, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(130, 210, 240, 0.025) 1px,
+      transparent 1px
+    );
+
+  background-size: 28px 28px;
+
+  pointer-events: none;
+}
+
+/* =========================================
+   CLOSE BUTTON
+========================================= */
+
+.lesson-close {
+  position: absolute;
+
+  top: 18px;
+  right: 20px;
+
+  z-index: 2;
+
+  width: 38px;
+  height: 38px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  background: rgba(255, 255, 255, 0.025);
+
+  color: #8996aa;
+
+  font-size: 25px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.lesson-close:hover {
+  color: #ffffff;
+
+  border-color: rgba(125, 220, 255, 0.5);
+
+  transform: rotate(90deg);
+}
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.lesson-label {
+  position: relative;
+  z-index: 1;
+
+  margin-bottom: 18px;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+
+  color: #78d9ff;
+}
+
+.lesson-viewer h2 {
+  position: relative;
+  z-index: 1;
+
+  margin: 0;
+
+  font-size: clamp(32px, 5vw, 55px);
+  line-height: 1;
+
+  letter-spacing: -2px;
+
+  color: #ffffff;
+}
+
+.lesson-description {
+  position: relative;
+  z-index: 1;
+
+  margin: 20px 0 35px;
+
+  max-width: 580px;
+
+  font-size: 15px;
+  line-height: 1.7;
+
+  color: #8d9aac;
+}
+
+/* =========================================
+   INFORMATION BLOCKS
+========================================= */
+
+.lesson-block {
+  position: relative;
+  z-index: 1;
+
+  margin-top: 15px;
+
+  padding: 20px;
+
+  border-left: 2px solid rgba(125, 220, 255, 0.35);
+
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.lesson-block span {
+  display: block;
+
+  margin-bottom: 9px;
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+
+  color: #6d8296;
+}
+
+.lesson-block p {
+  margin: 0;
+
+  font-size: 13px;
+  line-height: 1.7;
+
+  color: #b5c0cd;
+}
+
+/* =========================================
+   ACTION
+========================================= */
+
+.lesson-actions {
+  position: relative;
+  z-index: 1;
+
+  margin-top: 30px;
+
+  display: flex;
+  justify-content: flex-end;
+}
+
+.lesson-start {
+  padding: 14px 22px;
+
+  border: 1px solid rgba(125, 220, 255, 0.35);
+
+  background: rgba(80, 190, 230, 0.06);
+
+  color: #8cddff;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.lesson-start:hover {
+  background: rgba(80, 190, 230, 0.13);
+
+  border-color: rgba(125, 220, 255, 0.7);
+
+  transform: translateX(4px);
+}
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes lessonOverlayIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes lessonViewerIn {
+  from {
+    opacity: 0;
+    transform:
+      perspective(1000px)
+      rotateX(8deg)
+      translateY(25px)
+      scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      perspective(1000px)
+      rotateX(2deg)
+      translateY(0)
+      scale(1);
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+  .lesson-overlay {
+    padding: 18px;
+  }
+
+  .lesson-viewer {
+    padding: 35px 22px 25px;
+  }
+
+  .lesson-viewer h2 {
+    font-size: 34px;
+  }
+
+  .lesson-description {
+    font-size: 13px;
+  }
+
+  .lesson-actions {
+    justify-content: stretch;
+  }
+
+  .lesson-start {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lesson-overlay,
+  .lesson-viewer {
+    animation: none;
+  }
+}
+/* =========================================
+   RECOMMENDED LESSON
+========================================= */
+
+.recommended-lesson {
+  position: relative;
+  margin: 45px auto 70px;
+  width: min(1100px, 92%);
+
+  padding: 28px 32px;
+
+  border: 1px solid rgba(120, 215, 255, 0.22);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(20, 38, 55, 0.75),
+      rgba(5, 12, 21, 0.9)
+    );
+
+  box-shadow:
+    0 20px 70px rgba(0, 0, 0, 0.35),
+    0 0 45px rgba(80, 200, 255, 0.05);
+
+  overflow: hidden;
+
+  animation: recommendedFloat 4s ease-in-out infinite;
+}
+
+/* animated scanning line */
+
+.recommended-lesson::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -30%;
+
+  width: 30%;
+  height: 2px;
+
+  background: #8cddff;
+
+  box-shadow:
+    0 0 15px #8cddff,
+    0 0 35px rgba(140, 221, 255, 0.5);
+
+  animation: recommendationScan 3s linear infinite;
+}
+
+/* subtle grid */
+
+.recommended-lesson::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(130, 210, 240, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(130, 210, 240, 0.025) 1px,
+      transparent 1px
+    );
+
+  background-size: 32px 32px;
+
+  pointer-events: none;
+}
+
+/* SIGNAL */
+
+.recommend-signal {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  margin-bottom: 18px;
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 3px;
+
+  color: #7fdcff;
+}
+
+.recommend-signal span {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #8cddff;
+
+  box-shadow:
+    0 0 8px #8cddff,
+    0 0 18px rgba(140, 221, 255, 0.6);
+
+  animation: recommendationPulse 1.5s ease-in-out infinite;
+}
+
+/* CONTENT */
+
+.recommend-content {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 35px;
+}
+
+.recommend-content small {
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: #607487;
+}
+
+.recommend-content h2 {
+  margin: 8px 0 10px;
+
+  font-size: clamp(24px, 4vw, 38px);
+  line-height: 1;
+
+  letter-spacing: -1px;
+
+  color: #ffffff;
+}
+
+.recommend-content h2 strong {
+  color: #8cddff;
+}
+
+.recommend-content p {
+  max-width: 560px;
+
+  margin: 0;
+
+  font-size: 13px;
+  line-height: 1.7;
+
+  color: #8493a3;
+}
+
+/* BUTTON */
+
+.recommend-button {
+  flex-shrink: 0;
+
+  padding: 15px 23px;
+
+  border: 1px solid rgba(125, 220, 255, 0.35);
+
+  background: rgba(80, 190, 230, 0.06);
+
+  color: #8cddff;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.recommend-button:hover {
+  transform: translateX(5px);
+
+  background: rgba(80, 190, 230, 0.13);
+
+  border-color: rgba(125, 220, 255, 0.75);
+
+  box-shadow:
+    0 0 25px rgba(100, 210, 255, 0.12);
+}
+
+/* RECOMMENDED CARD */
+
+.recommended-card {
+  position: relative;
+
+  animation:
+    recommendedCardPulse 3s ease-in-out infinite;
+}
+
+.recommended-card::before {
+  content: "RECOMMENDED";
+
+  position: absolute;
+
+  top: -9px;
+  left: 18px;
+
+  z-index: 5;
+
+  padding: 5px 9px;
+
+  background: #0a1622;
+
+  border: 1px solid rgba(125, 220, 255, 0.35);
+
+  color: #8cddff;
+
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+/* ANIMATIONS */
+
+@keyframes recommendedFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes recommendationScan {
+  0% {
+    left: -30%;
+  }
+
+  100% {
+    left: 130%;
+  }
+}
+
+@keyframes recommendationPulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes recommendedCardPulse {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+  .recommended-lesson {
+    padding: 24px 20px;
+    margin-top: 30px;
+  }
+
+  .recommend-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .recommend-button {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .recommended-lesson,
+  .recommended-card,
+  .recommend-signal span,
+  .recommended-lesson::before {
+    animation: none;
+  }
+}

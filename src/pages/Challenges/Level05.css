@@ -1,0 +1,1342 @@
+/* =========================================
+   LEVEL 05 — UNDERWATER LOST CITY
+   ARRAYVERSE // SEARCH COMMANDER
+========================================= */
+
+:root {
+  --ocean-bg: #02121c;
+  --ocean-deep: #010b13;
+  --ocean-panel: rgba(3, 25, 38, 0.92);
+  --cyan: #00eaff;
+  --aqua: #48ffd8;
+  --blue: #248cff;
+  --gold: #ffd76a;
+  --purple: #a56cff;
+  --red: #ff5578;
+  --white: #efffff;
+  --muted: rgba(215, 245, 255, 0.56);
+}
+
+/* =========================================
+   BASE
+========================================= */
+
+.level05-page {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  padding: 28px 24px 22px;
+  background:
+    radial-gradient(
+      circle at 50% 15%,
+      rgba(0, 234, 255, 0.13),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 15% 75%,
+      rgba(36, 140, 255, 0.1),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 85% 70%,
+      rgba(165, 108, 255, 0.08),
+      transparent 25%
+    ),
+    linear-gradient(
+      180deg,
+      #031b28 0%,
+      #02131e 45%,
+      #010a12 100%
+    );
+  color: var(--white);
+  font-family: Arial, Helvetica, sans-serif;
+  z-index: 1;
+}
+
+/* =========================================
+   OCEAN LIGHT RAYS
+========================================= */
+
+.underwater-rays {
+  position: fixed;
+  top: -15%;
+  left: 50%;
+  width: 900px;
+  height: 120%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  opacity: 0.15;
+  background:
+    linear-gradient(
+      105deg,
+      transparent 0%,
+      rgba(0, 234, 255, 0.2) 24%,
+      transparent 48%
+    ),
+    linear-gradient(
+      75deg,
+      transparent 35%,
+      rgba(72, 255, 216, 0.12) 50%,
+      transparent 67%
+    );
+  filter: blur(12px);
+  animation: waterRays 9s ease-in-out infinite alternate;
+  z-index: 0;
+}
+
+@keyframes waterRays {
+  from {
+    transform: translateX(-50%) rotate(-2deg);
+  }
+
+  to {
+    transform: translateX(-50%) rotate(2deg);
+  }
+}
+
+/* =========================================
+   PARTICLES
+========================================= */
+
+.ocean-particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.7;
+  background-image:
+    radial-gradient(
+      circle,
+      rgba(0, 234, 255, 0.75) 1px,
+      transparent 1.5px
+    ),
+    radial-gradient(
+      circle,
+      rgba(72, 255, 216, 0.45) 1px,
+      transparent 1.5px
+    ),
+    radial-gradient(
+      circle,
+      rgba(255, 215, 106, 0.35) 1px,
+      transparent 1.5px
+    );
+  background-size:
+    180px 180px,
+    250px 250px,
+    330px 330px;
+  background-position:
+    20px 40px,
+    90px 130px,
+    170px 80px;
+  animation: underwaterParticles 22s linear infinite;
+  z-index: 0;
+}
+
+@keyframes underwaterParticles {
+  from {
+    transform: translateY(80px);
+  }
+
+  to {
+    transform: translateY(-180px);
+  }
+}
+
+/* =========================================
+   BUBBLES
+========================================= */
+
+.ocean-bubbles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.4;
+  background-image:
+    radial-gradient(
+      circle at 15% 90%,
+      rgba(255, 255, 255, 0.35) 0 2px,
+      transparent 3px
+    ),
+    radial-gradient(
+      circle at 72% 88%,
+      rgba(255, 255, 255, 0.25) 0 3px,
+      transparent 4px
+    ),
+    radial-gradient(
+      circle at 42% 96%,
+      rgba(255, 255, 255, 0.2) 0 2px,
+      transparent 3px
+    ),
+    radial-gradient(
+      circle at 88% 94%,
+      rgba(255, 255, 255, 0.22) 0 2px,
+      transparent 3px
+    );
+  background-size:
+    160px 260px,
+    230px 320px,
+    190px 280px,
+    260px 360px;
+  animation: bubblesRise 12s linear infinite;
+  z-index: 0;
+}
+
+@keyframes bubblesRise {
+  from {
+    transform: translateY(100px);
+  }
+
+  to {
+    transform: translateY(-280px);
+  }
+}
+
+/* =========================================
+   INTRO
+========================================= */
+
+.lost-city-intro {
+  position: relative;
+  z-index: 5;
+  width: min(940px, 94%);
+  min-height: calc(100vh - 75px);
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.level05-kicker {
+  margin: 22px 0 12px;
+  color: var(--cyan);
+  font-size: 10px;
+  font-weight: 1000;
+  letter-spacing: 4px;
+  text-shadow: 0 0 15px rgba(0, 234, 255, 0.7);
+}
+
+.lost-city-intro h1,
+.lost-city-complete h1 {
+  margin: 0;
+  color: var(--white);
+  font-size: clamp(42px, 7vw, 82px);
+  line-height: 0.9;
+  font-weight: 1000;
+  letter-spacing: -3px;
+  text-transform: uppercase;
+  text-shadow:
+    0 5px 0 rgba(0, 0, 0, 0.65),
+    0 0 25px rgba(0, 234, 255, 0.12);
+}
+
+.lost-city-intro h1 span,
+.lost-city-complete h1 span {
+  display: block;
+  color: var(--aqua);
+  text-shadow:
+    0 0 14px rgba(72, 255, 216, 0.75),
+    0 0 40px rgba(72, 255, 216, 0.2);
+}
+
+.ocean-description {
+  width: min(670px, 100%);
+  margin: 24px auto 18px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* =========================================
+   SONAR
+========================================= */
+
+.sonar-device {
+  position: relative;
+  width: 155px;
+  height: 155px;
+  display: grid;
+  place-items: center;
+}
+
+.sonar-core {
+  position: relative;
+  z-index: 5;
+  width: 76px;
+  height: 76px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(0, 234, 255, 0.8);
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle,
+      rgba(0, 234, 255, 0.3),
+      rgba(1, 12, 19, 0.95) 68%
+    );
+  box-shadow:
+    0 0 25px rgba(0, 234, 255, 0.6),
+    inset 0 0 25px rgba(0, 234, 255, 0.2);
+  font-size: 35px;
+  animation: sonarCorePulse 2.5s ease-in-out infinite;
+}
+
+@keyframes sonarCorePulse {
+  0%,
+  100% {
+    transform: scale(0.96);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.sonar-ring {
+  position: absolute;
+  border: 1px solid rgba(0, 234, 255, 0.38);
+  border-radius: 50%;
+}
+
+.sonar-ring-one {
+  inset: 18px;
+  animation: sonarSpin 8s linear infinite;
+}
+
+.sonar-ring-two {
+  inset: 0;
+  border-style: dashed;
+  border-color: rgba(72, 255, 216, 0.25);
+  animation: sonarSpinReverse 12s linear infinite;
+}
+
+.sonar-sweep {
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(0, 234, 255, 0.25),
+    transparent 22%,
+    transparent 100%
+  );
+  animation: sonarSweep 3s linear infinite;
+}
+
+@keyframes sonarSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes sonarSpinReverse {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes sonarSweep {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================
+   OXYGEN STATUS
+========================================= */
+
+.oxygen-warning {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 7px auto 20px;
+  padding: 9px 15px;
+  border: 1px solid rgba(72, 255, 216, 0.25);
+  border-radius: 999px;
+  background: rgba(72, 255, 216, 0.04);
+  color: rgba(215, 245, 255, 0.62);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 1.4px;
+}
+
+.oxygen-warning strong {
+  color: var(--aqua);
+  text-shadow: 0 0 9px rgba(72, 255, 216, 0.65);
+}
+
+.oxygen-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--aqua);
+  box-shadow: 0 0 12px rgba(72, 255, 216, 0.9);
+  animation: oxygenBlink 1.8s ease-in-out infinite;
+}
+
+@keyframes oxygenBlink {
+  50% {
+    opacity: 0.4;
+  }
+}
+
+/* =========================================
+   RULES
+========================================= */
+
+.ocean-rules {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 5px 0 25px;
+}
+
+.ocean-rules > div {
+  min-width: 130px;
+  padding: 14px 18px;
+  border: 1px solid rgba(0, 234, 255, 0.15);
+  background: rgba(2, 22, 33, 0.72);
+  box-shadow:
+    inset 0 0 22px rgba(0, 234, 255, 0.025),
+    0 10px 30px rgba(0, 0, 0, 0.22);
+}
+
+.ocean-rules span {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 20px;
+}
+
+.ocean-rules strong {
+  display: block;
+  color: var(--cyan);
+  font-size: 22px;
+}
+
+.ocean-rules small {
+  color: rgba(215, 245, 255, 0.38);
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 1.4px;
+}
+
+/* =========================================
+   DIVE BUTTON
+========================================= */
+
+.dive-button {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  padding: 17px 30px;
+  border: 1px solid rgba(0, 234, 255, 0.8);
+  background: rgba(0, 234, 255, 0.07);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 1000;
+  letter-spacing: 2.5px;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow:
+    0 0 25px rgba(0, 234, 255, 0.1),
+    inset 0 0 20px rgba(0, 234, 255, 0.04);
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.dive-button:hover {
+  transform: translateY(-3px);
+  background: rgba(0, 234, 255, 0.13);
+  box-shadow:
+    0 0 35px rgba(0, 234, 255, 0.25),
+    inset 0 0 22px rgba(0, 234, 255, 0.07);
+}
+
+.ocean-warning {
+  margin-top: 17px;
+  color: rgba(255, 215, 106, 0.48);
+  font-size: 8px;
+  letter-spacing: 1.5px;
+}
+
+/* =========================================
+   HUD
+========================================= */
+
+.underwater-game-screen {
+  padding-top: 23px;
+}
+
+.ocean-hud {
+  position: relative;
+  z-index: 5;
+  width: min(1160px, 94%);
+  margin: 0 auto 18px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border: 1px solid rgba(0, 234, 255, 0.17);
+  background: rgba(2, 18, 28, 0.82);
+  box-shadow:
+    0 14px 45px rgba(0, 0, 0, 0.28),
+    inset 0 0 25px rgba(0, 234, 255, 0.025);
+  backdrop-filter: blur(10px);
+}
+
+.ocean-title {
+  color: var(--cyan);
+  font-size: 11px;
+  font-weight: 1000;
+  letter-spacing: 2px;
+}
+
+.ocean-title span {
+  margin-right: 8px;
+}
+
+.ocean-stats {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.ocean-stat {
+  padding: 8px 13px;
+  border: 1px solid rgba(0, 234, 255, 0.15);
+  background: rgba(0, 234, 255, 0.035);
+  color: var(--white);
+  font-size: 10px;
+  font-weight: 900;
+}
+
+/* =========================================
+   OXYGEN METER
+========================================= */
+
+.oxygen-meter {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 105px;
+  padding: 8px 10px;
+  border: 1px solid rgba(72, 255, 216, 0.16);
+  background: rgba(72, 255, 216, 0.025);
+}
+
+.oxygen-meter > span {
+  color: var(--aqua);
+  font-size: 8px;
+  font-weight: 1000;
+}
+
+.oxygen-track {
+  flex: 1;
+  height: 5px;
+  overflow: hidden;
+  background: rgba(72, 255, 216, 0.08);
+}
+
+.oxygen-fill {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--aqua),
+    var(--cyan)
+  );
+  box-shadow: 0 0 10px rgba(72, 255, 216, 0.75);
+  transition: width 0.4s ease;
+}
+
+/* =========================================
+   PROGRESS
+========================================= */
+
+.sonar-progress {
+  position: relative;
+  z-index: 5;
+  width: min(860px, 92%);
+  margin: 0 auto 22px;
+}
+
+.sonar-progress-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  color: rgba(215, 245, 255, 0.5);
+  font-size: 8px;
+  font-weight: 1000;
+  letter-spacing: 1.5px;
+}
+
+.sonar-progress-label span:first-child {
+  color: var(--cyan);
+}
+
+.sonar-progress-track {
+  width: 100%;
+  height: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 234, 255, 0.14);
+  background: rgba(0, 234, 255, 0.035);
+}
+
+.sonar-progress-fill {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--blue),
+    var(--cyan),
+    var(--aqua)
+  );
+  box-shadow: 0 0 15px rgba(0, 234, 255, 0.8);
+  transition: width 0.45s ease;
+}
+
+/* =========================================
+   MAIN CARD
+========================================= */
+
+.underwater-card {
+  position: relative;
+  z-index: 5;
+  width: min(930px, 94%);
+  margin: auto;
+  padding: 32px;
+  border: 1px solid rgba(0, 234, 255, 0.2);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(3, 29, 43, 0.96),
+      rgba(2, 13, 21, 0.97)
+    );
+  box-shadow:
+    0 28px 85px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(0, 234, 255, 0.06),
+    inset 0 0 55px rgba(0, 234, 255, 0.025);
+  overflow: hidden;
+}
+
+.underwater-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--blue),
+    var(--cyan),
+    var(--aqua),
+    transparent
+  );
+  box-shadow: 0 0 15px rgba(0, 234, 255, 0.8);
+}
+
+.underwater-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0,
+    transparent 5px,
+    rgba(0, 234, 255, 0.01) 6px
+  );
+}
+
+.ruin-corner {
+  position: absolute;
+  width: 38px;
+  height: 38px;
+  border-color: rgba(0, 234, 255, 0.4);
+  border-style: solid;
+}
+
+.ruin-one {
+  top: 15px;
+  left: 15px;
+  border-width: 1px 0 0 1px;
+}
+
+.ruin-two {
+  right: 15px;
+  bottom: 15px;
+  border-width: 0 1px 1px 0;
+}
+
+.floating-treasure {
+  position: absolute;
+  top: 25px;
+  right: 34px;
+  font-size: 32px;
+  filter: drop-shadow(0 0 13px rgba(0, 234, 255, 0.65));
+  animation: treasureFloat 3s ease-in-out infinite;
+}
+
+@keyframes treasureFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-4deg);
+  }
+
+  50% {
+    transform: translateY(-8px) rotate(5deg);
+  }
+}
+
+.question-kicker05 {
+  position: relative;
+  z-index: 2;
+  margin: 0 0 10px;
+  color: var(--aqua);
+  font-size: 8px;
+  font-weight: 1000;
+  letter-spacing: 2px;
+}
+
+.underwater-card h2 {
+  position: relative;
+  z-index: 2;
+  width: min(760px, 100%);
+  margin: 0 auto 20px;
+  text-align: center;
+  color: var(--white);
+  font-size: clamp(20px, 3vw, 29px);
+  line-height: 1.35;
+}
+
+/* =========================================
+   TREASURE MAP / ARRAY
+========================================= */
+
+.treasure-map-display {
+  position: relative;
+  z-index: 2;
+  margin: 0 auto 21px;
+  padding: 17px;
+  border: 1px solid rgba(255, 215, 106, 0.2);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 215, 106, 0.035),
+      rgba(0, 234, 255, 0.025)
+    );
+  box-shadow:
+    inset 0 0 25px rgba(255, 215, 106, 0.025);
+}
+
+.map-label {
+  margin-bottom: 13px;
+  color: rgba(255, 215, 106, 0.55);
+  text-align: center;
+  font-size: 8px;
+  font-weight: 1000;
+  letter-spacing: 2px;
+}
+
+.artifact-array {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+}
+
+.artifact-cell {
+  position: relative;
+  width: 92px;
+  padding: 11px 7px;
+  border: 1px solid rgba(0, 234, 255, 0.22);
+  background: #041720;
+  text-align: center;
+  box-shadow: inset 0 0 18px rgba(0, 234, 255, 0.025);
+}
+
+.artifact-cell small {
+  display: block;
+  margin-bottom: 6px;
+  color: rgba(0, 234, 255, 0.45);
+  font-size: 7px;
+  font-weight: 900;
+}
+
+.artifact-cell strong {
+  color: var(--white);
+  font-size: 25px;
+}
+
+.sonar-target {
+  border-color: rgba(72, 255, 216, 0.7);
+  background: rgba(72, 255, 216, 0.06);
+  box-shadow:
+    0 0 20px rgba(72, 255, 216, 0.1),
+    inset 0 0 20px rgba(72, 255, 216, 0.05);
+}
+
+.sonar-target strong {
+  color: var(--aqua);
+  text-shadow: 0 0 12px rgba(72, 255, 216, 0.7);
+}
+
+.sonar-target span {
+  position: absolute;
+  top: -10px;
+  right: -8px;
+  font-size: 17px;
+  filter: drop-shadow(0 0 8px rgba(0, 234, 255, 0.8));
+  animation: targetPing 1.4s ease-in-out infinite;
+}
+
+@keyframes targetPing {
+  0%,
+  100% {
+    transform: scale(0.8);
+    opacity: 0.6;
+  }
+
+  50% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+}
+
+/* =========================================
+   HELP
+========================================= */
+
+.sonar-help {
+  position: relative;
+  z-index: 2;
+  margin: 0 auto 20px;
+  text-align: center;
+  color: rgba(215, 245, 255, 0.47);
+  font-size: 10px;
+}
+
+/* =========================================
+   ANSWERS
+========================================= */
+
+.ocean-answer-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.ocean-answer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-height: 65px;
+  padding: 12px 15px;
+  border: 1px solid rgba(0, 234, 255, 0.15);
+  background: rgba(2, 16, 24, 0.92);
+  color: var(--white);
+  text-align: left;
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.ocean-answer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 234, 255, 0.08),
+    transparent
+  );
+  transform: translateX(-110%);
+  transition: transform 0.45s ease;
+}
+
+.ocean-answer:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 234, 255, 0.55);
+  background: rgba(0, 234, 255, 0.06);
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.25),
+    0 0 20px rgba(0, 234, 255, 0.07);
+}
+
+.ocean-answer:hover::before {
+  transform: translateX(110%);
+}
+
+.ocean-answer:disabled {
+  cursor: default;
+}
+
+.signal-number {
+  min-width: 31px;
+  height: 31px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(0, 234, 255, 0.25);
+  color: var(--cyan);
+  font-size: 8px;
+  font-weight: 1000;
+}
+
+.ocean-answer strong {
+  flex: 1;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.signal-arrow {
+  color: rgba(215, 245, 255, 0.25);
+  font-size: 20px;
+}
+
+/* =========================================
+   CORRECT / WRONG
+========================================= */
+
+.sonar-correct {
+  border-color: rgba(72, 255, 216, 0.75) !important;
+  background: rgba(72, 255, 216, 0.08) !important;
+  box-shadow:
+    0 0 24px rgba(72, 255, 216, 0.13),
+    inset 0 0 20px rgba(72, 255, 216, 0.04);
+  animation: artifactFound 0.55s ease;
+}
+
+.sonar-correct .signal-number {
+  border-color: rgba(72, 255, 216, 0.65);
+  color: var(--aqua);
+}
+
+.sonar-correct strong {
+  color: var(--aqua);
+}
+
+.sonar-wrong {
+  border-color: rgba(255, 85, 120, 0.75) !important;
+  background: rgba(255, 85, 120, 0.08) !important;
+  animation: sonarWrong 0.42s ease;
+}
+
+.sonar-wrong .signal-number {
+  border-color: rgba(255, 85, 120, 0.6);
+  color: var(--red);
+}
+
+@keyframes artifactFound {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.015);
+    box-shadow:
+      0 0 35px rgba(72, 255, 216, 0.3),
+      inset 0 0 25px rgba(72, 255, 216, 0.08);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes sonarWrong {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-5px);
+  }
+
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+/* =========================================
+   FEEDBACK
+========================================= */
+
+.ocean-feedback {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 16px;
+  padding: 14px 16px;
+  border: 1px solid;
+  animation: feedbackRise 0.3s ease;
+}
+
+@keyframes feedbackRise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.feedback-found {
+  border-color: rgba(72, 255, 216, 0.3);
+  background: rgba(72, 255, 216, 0.05);
+}
+
+.feedback-lost {
+  border-color: rgba(255, 85, 120, 0.3);
+  background: rgba(255, 85, 120, 0.05);
+}
+
+.sonar-feedback-icon {
+  width: 39px;
+  height: 39px;
+  flex: 0 0 39px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-size: 18px;
+}
+
+.feedback-found .sonar-feedback-icon {
+  background: rgba(72, 255, 216, 0.14);
+  box-shadow: 0 0 18px rgba(72, 255, 216, 0.25);
+}
+
+.feedback-lost .sonar-feedback-icon {
+  background: rgba(255, 85, 120, 0.12);
+  box-shadow: 0 0 18px rgba(255, 85, 120, 0.2);
+}
+
+.ocean-feedback strong {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+}
+
+.feedback-found strong {
+  color: var(--aqua);
+}
+
+.feedback-lost strong {
+  color: var(--red);
+}
+
+.ocean-feedback p {
+  margin: 5px 0 0;
+  color: rgba(215, 245, 255, 0.55);
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+/* =========================================
+   NEXT BUTTON
+========================================= */
+
+.next-dive-button {
+  position: relative;
+  z-index: 3;
+  display: block;
+  min-width: 235px;
+  margin: 18px auto 0;
+  padding: 13px 22px;
+  border: 1px solid rgba(0, 234, 255, 0.55);
+  background: rgba(0, 234, 255, 0.07);
+  color: var(--cyan);
+  font-size: 9px;
+  font-weight: 1000;
+  letter-spacing: 1.7px;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.next-dive-button:hover {
+  transform: translateY(-2px);
+  background: rgba(0, 234, 255, 0.13);
+  box-shadow: 0 0 22px rgba(0, 234, 255, 0.17);
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.ocean-game-footer {
+  position: relative;
+  z-index: 5;
+  width: min(1160px, 94%);
+  margin: 20px auto 0;
+  padding: 15px 0 5px;
+  border-top: 1px solid rgba(0, 234, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  color: rgba(215, 245, 255, 0.27);
+  font-size: 7px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+}
+
+/* =========================================
+   COMPLETION
+========================================= */
+
+.lost-city-complete {
+  position: relative;
+  z-index: 5;
+  width: min(780px, 94%);
+  min-height: calc(100vh - 75px);
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.city-discovery {
+  position: relative;
+  width: 135px;
+  height: 135px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 22px;
+  border: 1px solid rgba(255, 215, 106, 0.6);
+  border-radius: 50%;
+  background: rgba(255, 215, 106, 0.04);
+  box-shadow:
+    0 0 38px rgba(255, 215, 106, 0.2),
+    inset 0 0 30px rgba(255, 215, 106, 0.06);
+  font-size: 50px;
+  animation: cityPulse 2.2s ease-in-out infinite;
+}
+
+.discovery-ring {
+  position: absolute;
+  inset: -14px;
+  border: 1px dashed rgba(0, 234, 255, 0.4);
+  border-radius: 50%;
+  animation: sonarSpin 8s linear infinite;
+}
+
+@keyframes cityPulse {
+  0%,
+  100% {
+    transform: scale(0.97);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.lost-city-complete > p:not(.level05-kicker) {
+  width: min(610px, 100%);
+  margin: 22px auto;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.treasure-reward {
+  min-width: 245px;
+  margin: 5px auto 25px;
+  padding: 18px 25px;
+  border: 1px solid rgba(255, 215, 106, 0.3);
+  background: rgba(255, 215, 106, 0.045);
+  box-shadow:
+    0 0 30px rgba(255, 215, 106, 0.08),
+    inset 0 0 20px rgba(255, 215, 106, 0.025);
+}
+
+.treasure-reward span {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 23px;
+}
+
+.treasure-reward strong {
+  display: block;
+  color: var(--gold);
+  font-size: 28px;
+  text-shadow: 0 0 15px rgba(255, 215, 106, 0.65);
+}
+
+.treasure-reward small {
+  color: rgba(215, 245, 255, 0.4);
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+}
+
+.completion-actions05 {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.replay-dive-button,
+.return-ocean-button {
+  padding: 13px 20px;
+  border: 1px solid rgba(0, 234, 255, 0.35);
+  background: rgba(0, 234, 255, 0.05);
+  color: var(--cyan);
+  font-size: 9px;
+  font-weight: 1000;
+  letter-spacing: 1.2px;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.replay-dive-button:hover,
+.return-ocean-button:hover {
+  transform: translateY(-2px);
+  background: rgba(0, 234, 255, 0.12);
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 760px) {
+  .level05-page {
+    padding: 20px 12px;
+  }
+
+  .lost-city-intro h1,
+  .lost-city-complete h1 {
+    letter-spacing: -2px;
+  }
+
+  .ocean-rules {
+    width: 100%;
+    gap: 7px;
+  }
+
+  .ocean-rules > div {
+    min-width: 0;
+    flex: 1;
+    padding: 11px 7px;
+  }
+
+  .underwater-card {
+    padding: 24px 16px;
+  }
+
+  .ocean-answer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .artifact-array {
+    flex-wrap: wrap;
+  }
+
+  .artifact-cell {
+    width: calc(33.333% - 5px);
+  }
+
+  .floating-treasure {
+    display: none;
+  }
+
+  .ocean-game-footer {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 560px) {
+  .ocean-hud {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .ocean-title {
+    text-align: center;
+  }
+
+  .ocean-stats {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .oxygen-meter {
+    min-width: 120px;
+  }
+
+  .artifact-cell {
+    width: calc(50% - 4px);
+  }
+
+  .completion-actions05 {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .replay-dive-button,
+  .return-ocean-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 390px) {
+  .artifact-cell {
+    width: calc(50% - 4px);
+  }
+
+  .ocean-rules strong {
+    font-size: 18px;
+  }
+
+  .ocean-rules small {
+    font-size: 7px;
+  }
+}
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .underwater-rays,
+  .ocean-particles,
+  .ocean-bubbles,
+  .sonar-core,
+  .sonar-ring-one,
+  .sonar-ring-two,
+  .sonar-sweep,
+  .oxygen-dot,
+  .floating-treasure,
+  .sonar-target span,
+  .city-discovery,
+  .discovery-ring {
+    animation: none;
+  }
+
+  .ocean-answer,
+  .dive-button,
+  .next-dive-button {
+    transition: none;
+  }
+}

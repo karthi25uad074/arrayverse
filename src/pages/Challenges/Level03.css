@@ -1,0 +1,1030 @@
+/* =========================================================
+   LEVEL 03 — MEMORY RUNNER
+   MAGIC MEMORY LIBRARY
+   ========================================================= */
+
+:root {
+  --magic-blue: #55d9ff;
+  --magic-cyan: #8df4ff;
+  --magic-purple: #a66cff;
+  --magic-pink: #ff76d9;
+  --magic-gold: #ffd76a;
+  --magic-green: #6dffc1;
+  --magic-red: #ff6685;
+  --library-dark: #08051a;
+  --library-deep: #120a2b;
+  --library-panel: rgba(18, 10, 43, 0.9);
+  --library-text: #f7f3ff;
+  --library-muted: rgba(225, 218, 245, 0.58);
+}
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.level03-page {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  padding: 0 20px;
+  color: var(--library-text);
+  background:
+    radial-gradient(
+      circle at 50% 12%,
+      rgba(123, 76, 255, 0.2),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 15% 75%,
+      rgba(255, 118, 217, 0.08),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 85% 65%,
+      rgba(85, 217, 255, 0.08),
+      transparent 24%
+    ),
+    linear-gradient(180deg, #08051a 0%, #03020b 100%);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.level03-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(166, 108, 255, 0.025),
+      transparent
+    );
+  opacity: 0.8;
+}
+
+.level03-page > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================================================
+   MAGIC STARS
+   ========================================================= */
+
+.library-stars,
+.library-stars::before,
+.library-stars::after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.library-stars {
+  opacity: 0.85;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,.9) 0 1px, transparent 1.5px),
+    radial-gradient(circle, rgba(166,108,255,.75) 0 1px, transparent 1.5px),
+    radial-gradient(circle, rgba(85,217,255,.65) 0 1px, transparent 1.5px);
+  background-size: 120px 120px, 190px 190px, 270px 270px;
+  background-position: 20px 30px, 80px 90px, 150px 50px;
+  animation: libraryStars 28s linear infinite;
+}
+
+.library-stars::before {
+  content: "";
+  background:
+    radial-gradient(
+      circle at 25% 35%,
+      rgba(166, 108, 255, 0.12),
+      transparent 18%
+    ),
+    radial-gradient(
+      circle at 75% 65%,
+      rgba(255, 118, 217, 0.08),
+      transparent 18%
+    );
+}
+
+.library-stars::after {
+  content: "";
+  background:
+    linear-gradient(
+      125deg,
+      transparent 45%,
+      rgba(255,255,255,.04) 50%,
+      transparent 55%
+    );
+  background-size: 700px 700px;
+  animation: magicSweep 10s linear infinite;
+}
+
+@keyframes libraryStars {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-70px, 60px, 0);
+  }
+}
+
+@keyframes magicSweep {
+  from {
+    transform: translateX(-300px);
+  }
+
+  to {
+    transform: translateX(300px);
+  }
+}
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.library-intro {
+  width: min(940px, 100%);
+  min-height: 100vh;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 55px 0;
+}
+
+.magic-orb {
+  font-size: 55px;
+  margin-bottom: 5px;
+  filter:
+    drop-shadow(0 0 12px rgba(166,108,255,.7))
+    drop-shadow(0 0 30px rgba(85,217,255,.2));
+  animation: orbFloat 2.8s ease-in-out infinite;
+}
+
+@keyframes orbFloat {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-9px) scale(1.06);
+  }
+}
+
+/* =========================================================
+   MAGIC LIBRARY TOWER
+   ========================================================= */
+
+.library-tower {
+  position: relative;
+  width: 260px;
+  height: 155px;
+  margin-bottom: 20px;
+  border-radius: 80px 80px 20px 20px;
+  border: 1px solid rgba(166,108,255,.35);
+  background:
+    linear-gradient(
+      180deg,
+      #24134f 0%,
+      #130a2d 70%,
+      #090518 100%
+    );
+  box-shadow:
+    0 20px 45px rgba(0,0,0,.5),
+    inset 0 0 35px rgba(166,108,255,.08);
+}
+
+.library-tower::before,
+.library-tower::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 55px;
+  height: 95px;
+  border: 1px solid rgba(85,217,255,.18);
+  background: #0d0822;
+}
+
+.library-tower::before {
+  left: -28px;
+  border-radius: 45px 45px 0 0;
+}
+
+.library-tower::after {
+  right: -28px;
+  border-radius: 45px 45px 0 0;
+}
+
+.tower-glow {
+  position: absolute;
+  top: 26px;
+  left: 50%;
+  width: 105px;
+  height: 105px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(85,217,255,.2),
+    transparent 68%
+  );
+  animation: towerPulse 2s ease-in-out infinite;
+}
+
+@keyframes towerPulse {
+  0%, 100% {
+    opacity: .6;
+    transform: translateX(-50%) scale(.95);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.08);
+  }
+}
+
+.tower-books {
+  position: absolute;
+  left: 50%;
+  bottom: 48px;
+  transform: translateX(-50%);
+  font-size: 50px;
+  z-index: 3;
+  filter: drop-shadow(0 0 10px rgba(166,108,255,.5));
+}
+
+.tower-door {
+  position: absolute;
+  left: 50%;
+  bottom: -2px;
+  transform: translateX(-50%);
+  font-size: 42px;
+  z-index: 4;
+}
+
+/* =========================================================
+   INTRO TYPOGRAPHY
+   ========================================================= */
+
+.level03-kicker {
+  margin: 0 0 12px;
+  color: var(--magic-cyan);
+  font-size: 10px;
+  font-weight: 1000;
+  letter-spacing: 4px;
+  text-shadow: 0 0 12px rgba(85,217,255,.65);
+}
+
+.library-intro h1,
+.memory-complete h1 {
+  margin: 0;
+  font-size: clamp(42px, 8vw, 76px);
+  line-height: .92;
+  font-weight: 1000;
+  letter-spacing: -3px;
+  text-transform: uppercase;
+  text-shadow:
+    0 3px 0 #16102b,
+    0 0 25px rgba(166,108,255,.16);
+}
+
+.library-intro h1 span,
+.memory-complete h1 span {
+  display: block;
+  color: var(--magic-purple);
+  text-shadow:
+    0 3px 0 #29145a,
+    0 0 24px rgba(166,108,255,.4);
+}
+
+.level03-description {
+  width: min(660px, 100%);
+  margin: 22px auto 28px;
+  color: var(--library-muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* =========================================================
+   RULES
+   ========================================================= */
+
+.library-rules {
+  display: flex;
+  justify-content: center;
+  gap: 13px;
+  margin: 4px 0 28px;
+}
+
+.library-rules > div {
+  width: 120px;
+  padding: 14px 10px;
+  border: 1px solid rgba(166,108,255,.2);
+  border-radius: 14px;
+  background: rgba(16, 8, 38, .78);
+  box-shadow:
+    inset 0 0 20px rgba(166,108,255,.025),
+    0 10px 25px rgba(0,0,0,.25);
+}
+
+.library-rules span {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.library-rules strong {
+  display: block;
+  font-size: 21px;
+}
+
+.library-rules small {
+  display: block;
+  margin-top: 4px;
+  color: rgba(255,255,255,.38);
+  font-size: 7px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+}
+
+/* =========================================================
+   ENTER BUTTON
+   ========================================================= */
+
+.enter-library-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-width: 300px;
+  padding: 17px 26px;
+  border: 1px solid rgba(166,108,255,.8);
+  border-radius: 12px;
+  color: #fff;
+  background:
+    linear-gradient(
+      135deg,
+      #a66cff,
+      #7240d9
+    );
+  font-size: 11px;
+  font-weight: 1000;
+  letter-spacing: 2px;
+  cursor: pointer;
+  box-shadow:
+    0 0 25px rgba(166,108,255,.25),
+    inset 0 1px 0 rgba(255,255,255,.3);
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
+}
+
+.enter-library-button:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 0 40px rgba(166,108,255,.4),
+    0 15px 35px rgba(0,0,0,.3);
+}
+
+.enter-library-button span {
+  font-size: 16px;
+}
+
+.library-warning {
+  margin-top: 15px;
+  color: rgba(255,255,255,.28);
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+/* =========================================================
+   GAME HUD
+   ========================================================= */
+
+.memory-game-screen {
+  padding-top: 22px;
+}
+
+.library-hud {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.library-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--magic-purple);
+  font-size: 12px;
+  font-weight: 1000;
+  letter-spacing: 2px;
+  text-shadow: 0 0 13px rgba(166,108,255,.5);
+}
+
+.library-title span {
+  font-size: 22px;
+}
+
+.library-stats {
+  display: flex;
+  gap: 10px;
+}
+
+.library-stat {
+  min-width: 82px;
+  padding: 9px 13px;
+  border: 1px solid rgba(166,108,255,.2);
+  border-radius: 9px;
+  background: rgba(10, 5, 25, .85);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 900;
+  text-align: center;
+}
+
+/* =========================================================
+   PROGRESS
+   ========================================================= */
+
+.spell-progress {
+  width: min(850px, 100%);
+  margin: 32px auto 20px;
+}
+
+.spell-progress-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  color: rgba(255,255,255,.42);
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+}
+
+.spell-progress-label span:first-child {
+  color: var(--magic-cyan);
+}
+
+.spell-progress-track {
+  height: 7px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255,255,255,.07);
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.6);
+}
+
+.spell-progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background:
+    linear-gradient(
+      90deg,
+      var(--magic-blue),
+      var(--magic-purple),
+      var(--magic-pink)
+    );
+  box-shadow: 0 0 15px rgba(166,108,255,.55);
+  transition: width .4s ease;
+}
+
+/* =========================================================
+   GAME CARD
+   ========================================================= */
+
+.memory-game-card {
+  position: relative;
+  width: min(850px, 100%);
+  margin: 0 auto;
+  padding: 42px 42px 34px;
+  border: 1px solid rgba(166,108,255,.23);
+  border-radius: 20px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(25, 14, 55, .97),
+      rgba(7, 4, 18, .98)
+    );
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.45),
+    inset 0 1px 0 rgba(255,255,255,.05);
+  overflow: hidden;
+}
+
+.memory-game-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      120deg,
+      transparent 25%,
+      rgba(166,108,255,.045) 50%,
+      transparent 75%
+    );
+  background-size: 600px 100%;
+  animation: memorySweep 8s linear infinite;
+}
+
+@keyframes memorySweep {
+  from {
+    background-position: -600px 0;
+  }
+
+  to {
+    background-position: 600px 0;
+  }
+}
+
+.floating-book {
+  position: absolute;
+  top: 18px;
+  right: 23px;
+  font-size: 25px;
+  filter: drop-shadow(0 0 10px rgba(166,108,255,.5));
+  animation: bookFloat 2.5s ease-in-out infinite;
+}
+
+@keyframes bookFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(-3deg);
+  }
+
+  50% {
+    transform: translateY(-6px) rotate(3deg);
+  }
+}
+
+.question-kicker03 {
+  margin: 0 0 12px;
+  color: var(--magic-cyan);
+  font-size: 8px;
+  font-weight: 1000;
+  letter-spacing: 3px;
+}
+
+.memory-game-card h2 {
+  position: relative;
+  max-width: 690px;
+  margin: 0 auto 25px;
+  color: #fff;
+  font-size: clamp(20px, 3vw, 29px);
+  line-height: 1.35;
+  text-align: center;
+}
+
+/* =========================================================
+   MEMORY SHELVES
+   ========================================================= */
+
+.memory-shelves {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 0 auto 19px;
+}
+
+.memory-shelf {
+  position: relative;
+  min-height: 100px;
+  padding: 16px 10px 10px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 5px;
+  border-bottom: 5px solid #6f3c8f;
+  border-radius: 9px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(46, 25, 78, .8),
+      rgba(18, 9, 34, .9)
+    );
+  box-shadow:
+    inset 0 0 18px rgba(166,108,255,.06),
+    0 8px 15px rgba(0,0,0,.25);
+}
+
+.memory-shelf span {
+  position: absolute;
+  top: 7px;
+  left: 9px;
+  color: rgba(141,244,255,.5);
+  font-size: 7px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.memory-shelf b {
+  font-size: 27px;
+  filter: drop-shadow(0 0 5px rgba(166,108,255,.25));
+  transition: transform .2s ease;
+}
+
+.memory-shelf:hover b {
+  transform: translateY(-5px);
+}
+
+/* =========================================================
+   HELP
+   ========================================================= */
+
+.memory-help {
+  margin: 15px auto 22px;
+  color: rgba(255,255,255,.43);
+  font-size: 10px;
+  text-align: center;
+}
+
+/* =========================================================
+   ANSWERS
+   ========================================================= */
+
+.magic-answer-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.magic-answer {
+  position: relative;
+  min-height: 65px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 12px 16px;
+  border: 1px solid rgba(166,108,255,.13);
+  border-radius: 12px;
+  color: #fff;
+  background: rgba(10, 5, 25, .92);
+  cursor: pointer;
+  text-align: left;
+  transition:
+    transform .18s ease,
+    border-color .18s ease,
+    background .18s ease,
+    box-shadow .18s ease;
+}
+
+.magic-answer:hover:not(:disabled) {
+  transform: translateY(-3px);
+  border-color: rgba(166,108,255,.6);
+  background: rgba(35, 19, 69, .95);
+  box-shadow: 0 10px 25px rgba(0,0,0,.3);
+}
+
+.magic-answer:disabled {
+  cursor: default;
+}
+
+.spell-number {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 7px;
+  color: var(--magic-cyan);
+  border: 1px solid rgba(85,217,255,.2);
+  background: rgba(85,217,255,.05);
+  font-size: 10px;
+  font-weight: 1000;
+}
+
+.magic-answer strong {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.memory-correct {
+  border-color: rgba(109,255,193,.75) !important;
+  background: rgba(109,255,193,.07) !important;
+  box-shadow:
+    0 0 25px rgba(109,255,193,.13),
+    inset 0 0 18px rgba(109,255,193,.04);
+  animation: memoryCorrect .55s ease;
+}
+
+.memory-correct .spell-number {
+  color: #071c14;
+  background: var(--magic-green);
+  border-color: var(--magic-green);
+}
+
+.memory-wrong {
+  border-color: rgba(255,102,133,.75) !important;
+  background: rgba(255,102,133,.07) !important;
+  animation: memoryWrong .42s ease;
+}
+
+.memory-wrong .spell-number {
+  color: #fff;
+  background: rgba(255,102,133,.35);
+  border-color: rgba(255,102,133,.7);
+}
+
+@keyframes memoryCorrect {
+  0% {
+    transform: scale(.97);
+  }
+
+  60% {
+    transform: scale(1.02);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes memoryWrong {
+  0%, 100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-7px);
+  }
+
+  75% {
+    transform: translateX(7px);
+  }
+}
+
+/* =========================================================
+   FEEDBACK
+   ========================================================= */
+
+.memory-feedback {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  margin-top: 18px;
+  padding: 15px 17px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.memory-feedback.correct {
+  border-color: rgba(109,255,193,.3);
+  background: rgba(109,255,193,.05);
+}
+
+.memory-feedback.wrong {
+  border-color: rgba(255,102,133,.3);
+  background: rgba(255,102,133,.05);
+}
+
+.feedback-orb {
+  font-size: 22px;
+}
+
+.memory-feedback strong {
+  display: block;
+  color: var(--magic-gold);
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.memory-feedback p {
+  margin: 5px 0 0;
+  color: rgba(255,255,255,.58);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   NEXT BUTTON
+   ========================================================= */
+
+.next-spell-button {
+  display: block;
+  margin: 18px auto 0;
+  padding: 13px 23px;
+  border: 1px solid rgba(166,108,255,.6);
+  border-radius: 9px;
+  color: #fff;
+  background: linear-gradient(
+    135deg,
+    #a66cff,
+    #7441d8
+  );
+  font-size: 9px;
+  font-weight: 1000;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(166,108,255,.16);
+  transition:
+    transform .18s ease,
+    box-shadow .18s ease;
+}
+
+.next-spell-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(166,108,255,.35);
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.library-game-footer {
+  width: min(850px, 100%);
+  margin: 24px auto 30px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,.07);
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  color: rgba(255,255,255,.24);
+  font-size: 7px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+}
+
+/* =========================================================
+   COMPLETION
+   ========================================================= */
+
+.memory-complete {
+  width: min(700px, 100%);
+  min-height: 100vh;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 50px 0;
+}
+
+.completion-orb {
+  font-size: 76px;
+  margin-bottom: 15px;
+  filter:
+    drop-shadow(0 0 20px rgba(166,108,255,.65))
+    drop-shadow(0 0 35px rgba(85,217,255,.2));
+  animation: completionOrb 2s ease-in-out infinite;
+}
+
+@keyframes completionOrb {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-10px) scale(1.08);
+  }
+}
+
+.memory-complete > p:not(.level03-kicker) {
+  max-width: 560px;
+  margin: 20px auto;
+  color: var(--library-muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.memory-reward {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 220px;
+  padding: 20px 30px;
+  border: 1px solid rgba(166,108,255,.4);
+  border-radius: 15px;
+  background: rgba(166,108,255,.07);
+  box-shadow:
+    0 0 30px rgba(166,108,255,.12),
+    inset 0 0 20px rgba(166,108,255,.03);
+}
+
+.memory-reward span {
+  font-size: 22px;
+}
+
+.memory-reward strong {
+  margin-top: 5px;
+  color: var(--magic-gold);
+  font-size: 28px;
+}
+
+.memory-reward small {
+  margin-top: 5px;
+  color: rgba(255,255,255,.35);
+  font-size: 7px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.completion-actions03 {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.replay-button03,
+.library-arena-button {
+  padding: 12px 18px;
+  border-radius: 9px;
+  font-size: 8px;
+  font-weight: 1000;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.replay-button03 {
+  color: var(--magic-purple);
+  border: 1px solid rgba(166,108,255,.4);
+  background: rgba(166,108,255,.07);
+}
+
+.library-arena-button {
+  color: #08051a;
+  border: 1px solid rgba(85,217,255,.5);
+  background: var(--magic-cyan);
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .level03-page {
+    padding: 0 14px;
+  }
+
+  .memory-game-card {
+    padding: 32px 18px 24px;
+  }
+
+  .magic-answer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .memory-shelves {
+    grid-template-columns: 1fr;
+  }
+
+  .memory-shelf {
+    min-height: 80px;
+  }
+
+  .library-rules {
+    gap: 7px;
+  }
+
+  .library-rules > div {
+    width: 100px;
+  }
+
+  .library-hud {
+    align-items: flex-start;
+  }
+
+  .library-stats {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .library-game-footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .library-intro h1,
+  .memory-complete h1 {
+    font-size: 42px;
+  }
+
+  .completion-actions03 {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .replay-button03,
+  .library-arena-button {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}

@@ -1,0 +1,593 @@
+/* =========================================================
+   ARRAYVERSE // SPACE BACKGROUND
+   DARK • MINIMAL • 3D • MOVING
+   ========================================================= */
+
+.space-background {
+  position: fixed;
+  inset: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+  z-index: 0;
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(18, 28, 48, 0.32),
+      transparent 42%
+    ),
+    #010207;
+}
+
+
+/* =========================================================
+   STAR FIELD
+   ========================================================= */
+
+.space-stars {
+  position: absolute;
+  inset: -50%;
+
+  width: 200%;
+  height: 200%;
+
+  background-repeat: repeat;
+
+  will-change: transform;
+}
+
+
+/* tiny distant stars */
+
+.stars-one {
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.75) 1px, transparent 1.5px),
+    radial-gradient(circle, rgba(170,200,230,0.55) 1px, transparent 1.5px),
+    radial-gradient(circle, rgba(255,255,255,0.5) 0.8px, transparent 1.3px);
+
+  background-size:
+    140px 140px,
+    190px 190px,
+    230px 230px;
+
+  background-position:
+    20px 30px,
+    70px 90px,
+    130px 40px;
+
+  opacity: 0.55;
+
+  animation:
+    starsDriftOne 80s linear infinite;
+}
+
+
+/* medium stars */
+
+.stars-two {
+  background-image:
+    radial-gradient(circle, rgba(210,225,255,0.8) 1.2px, transparent 2px),
+    radial-gradient(circle, rgba(255,255,255,0.7) 1px, transparent 2px);
+
+  background-size:
+    270px 270px,
+    330px 330px;
+
+  background-position:
+    90px 140px,
+    200px 50px;
+
+  opacity: 0.4;
+
+  animation:
+    starsDriftTwo 120s linear infinite;
+}
+
+
+/* very distant stars */
+
+.stars-three {
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.35) 0.7px, transparent 1px),
+    radial-gradient(circle, rgba(130,160,190,0.3) 0.7px, transparent 1px);
+
+  background-size:
+    100px 100px,
+    160px 160px;
+
+  background-position:
+    40px 20px,
+    80px 120px;
+
+  opacity: 0.3;
+
+  animation:
+    starsDriftThree 180s linear infinite;
+}
+
+
+/* =========================================================
+   STAR MOVEMENT
+   ========================================================= */
+
+@keyframes starsDriftOne {
+  0% {
+    transform:
+      translate3d(0, 0, 0)
+      rotate(0deg);
+  }
+
+  50% {
+    transform:
+      translate3d(-35px, 25px, 0)
+      rotate(0.5deg);
+  }
+
+  100% {
+    transform:
+      translate3d(-70px, 50px, 0)
+      rotate(1deg);
+  }
+}
+
+
+@keyframes starsDriftTwo {
+  0% {
+    transform:
+      translate3d(0, 0, 0)
+      scale(1);
+  }
+
+  50% {
+    transform:
+      translate3d(45px, -30px, 0)
+      scale(1.02);
+  }
+
+  100% {
+    transform:
+      translate3d(90px, -60px, 0)
+      scale(1.04);
+  }
+}
+
+
+@keyframes starsDriftThree {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(80px, 45px, 0);
+  }
+}
+
+
+/* =========================================================
+   SUBTLE PLANET 01
+   ========================================================= */
+
+.planet-one {
+  position: absolute;
+
+  width: 170px;
+  height: 170px;
+
+  left: -65px;
+  top: 18%;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      rgba(100,120,145,0.45),
+      rgba(18,25,37,0.95) 55%,
+      #020408 75%
+    );
+
+  box-shadow:
+    inset -25px -20px 45px rgba(0,0,0,0.9),
+    0 0 35px rgba(70,100,130,0.08);
+
+  opacity: 0.65;
+
+  transform:
+    translateZ(-200px);
+
+  animation:
+    planetFloatOne 18s ease-in-out infinite;
+}
+
+
+/* planet surface */
+
+.planet-one::before {
+  content: "";
+
+  position: absolute;
+  inset: 20px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 30% 40%,
+      rgba(140,155,175,0.12) 0 7px,
+      transparent 8px
+    ),
+    radial-gradient(
+      circle at 65% 65%,
+      rgba(140,155,175,0.1) 0 12px,
+      transparent 13px
+    );
+}
+
+
+/* =========================================================
+   SUBTLE PLANET 02
+   ========================================================= */
+
+.planet-two {
+  position: absolute;
+
+  width: 95px;
+  height: 95px;
+
+  right: 4%;
+  bottom: 15%;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      rgba(95,115,140,0.35),
+      rgba(12,17,27,0.95) 65%
+    );
+
+  box-shadow:
+    inset -18px -12px 30px rgba(0,0,0,0.9),
+    0 0 30px rgba(60,90,120,0.08);
+
+  opacity: 0.5;
+
+  animation:
+    planetFloatTwo 14s ease-in-out infinite;
+}
+
+
+@keyframes planetFloatOne {
+  0%,
+  100% {
+    transform:
+      translate3d(0,0,0)
+      rotate(0deg);
+  }
+
+  50% {
+    transform:
+      translate3d(35px,-20px,0)
+      rotate(8deg);
+  }
+}
+
+
+@keyframes planetFloatTwo {
+  0%,
+  100% {
+    transform:
+      translate3d(0,0,0)
+      scale(1);
+  }
+
+  50% {
+    transform:
+      translate3d(-25px,15px,0)
+      scale(1.04);
+  }
+}
+
+
+/* =========================================================
+   ORBIT RINGS
+   ========================================================= */
+
+.space-orbit {
+  position: absolute;
+
+  border: 1px solid rgba(150,170,200,0.12);
+
+  border-radius: 50%;
+
+  transform-style: preserve-3d;
+}
+
+
+.orbit-one {
+  width: 280px;
+  height: 90px;
+
+  left: -115px;
+  top: calc(18% + 40px);
+
+  transform:
+    rotate(-18deg)
+    rotateX(65deg);
+
+  animation:
+    orbitRotateOne 22s linear infinite;
+}
+
+
+.orbit-two {
+  width: 170px;
+  height: 55px;
+
+  right: -45px;
+  bottom: calc(15% + 20px);
+
+  border-color: rgba(100,130,160,0.08);
+
+  transform:
+    rotate(25deg)
+    rotateX(65deg);
+
+  animation:
+    orbitRotateTwo 28s linear infinite;
+}
+
+
+@keyframes orbitRotateOne {
+  from {
+    transform:
+      rotate(-18deg)
+      rotateX(65deg)
+      rotate(0deg);
+  }
+
+  to {
+    transform:
+      rotate(-18deg)
+      rotateX(65deg)
+      rotate(360deg);
+  }
+}
+
+
+@keyframes orbitRotateTwo {
+  from {
+    transform:
+      rotate(25deg)
+      rotateX(65deg)
+      rotate(0deg);
+  }
+
+  to {
+    transform:
+      rotate(25deg)
+      rotateX(65deg)
+      rotate(-360deg);
+  }
+}
+
+
+/* =========================================================
+   ASTEROIDS
+   ========================================================= */
+
+.space-asteroid {
+  position: absolute;
+
+  width: 12px;
+  height: 10px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #657080,
+      #171c25
+    );
+
+  clip-path: polygon(
+    18% 15%,
+    72% 4%,
+    100% 38%,
+    78% 88%,
+    30% 100%,
+    0 55%
+  );
+
+  opacity: 0.45;
+
+  filter:
+    drop-shadow(0 0 5px rgba(150,170,190,0.15));
+
+  animation:
+    asteroidDrift 20s linear infinite;
+}
+
+
+.asteroid-one {
+  top: 23%;
+  right: 18%;
+
+  transform: scale(1.5);
+
+  animation-duration: 24s;
+}
+
+
+.asteroid-two {
+  top: 63%;
+  left: 15%;
+
+  transform: scale(0.8);
+
+  animation-duration: 30s;
+  animation-delay: -8s;
+}
+
+
+.asteroid-three {
+  top: 78%;
+  right: 30%;
+
+  transform: scale(0.55);
+
+  animation-duration: 18s;
+  animation-delay: -4s;
+}
+
+
+@keyframes asteroidDrift {
+  0% {
+    transform:
+      translate3d(0,0,0)
+      rotate(0deg);
+  }
+
+  25% {
+    transform:
+      translate3d(40px,-20px,0)
+      rotate(90deg);
+  }
+
+  50% {
+    transform:
+      translate3d(80px,10px,0)
+      rotate(180deg);
+  }
+
+  75% {
+    transform:
+      translate3d(40px,30px,0)
+      rotate(270deg);
+  }
+
+  100% {
+    transform:
+      translate3d(0,0,0)
+      rotate(360deg);
+  }
+}
+
+
+/* =========================================================
+   VERY SUBTLE SPACE GLOW
+   ========================================================= */
+
+.space-glow {
+  position: absolute;
+
+  width: 500px;
+  height: 500px;
+
+  left: 50%;
+  top: 45%;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(40,70,110,0.06),
+      transparent 68%
+    );
+
+  filter: blur(30px);
+
+  animation:
+    spaceGlowPulse 8s ease-in-out infinite;
+}
+
+
+@keyframes spaceGlowPulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform:
+      translate(-50%, -50%)
+      scale(0.9);
+  }
+
+  50% {
+    opacity: 1;
+    transform:
+      translate(-50%, -50%)
+      scale(1.1);
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .planet-one {
+    width: 105px;
+    height: 105px;
+
+    left: -45px;
+  }
+
+  .planet-two {
+    width: 65px;
+    height: 65px;
+
+    right: -15px;
+  }
+
+  .orbit-one {
+    width: 180px;
+    height: 55px;
+
+    left: -75px;
+  }
+
+  .orbit-two {
+    width: 120px;
+    height: 40px;
+
+    right: -40px;
+  }
+
+  .space-glow {
+    width: 300px;
+    height: 300px;
+  }
+
+  .asteroid-one {
+    right: 25%;
+  }
+
+  .asteroid-two {
+    left: 25%;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .space-stars,
+  .space-planet,
+  .space-orbit,
+  .space-asteroid,
+  .space-glow {
+    animation: none !important;
+  }
+}

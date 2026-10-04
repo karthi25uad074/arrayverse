@@ -1,0 +1,929 @@
+/* =========================================================
+   LEVEL 02 — INDEX HUNTER
+   PIRATE TREASURE HUNT
+   ========================================================= */
+
+:root {
+  --ocean: #071a2a;
+  --ocean-deep: #030b14;
+  --cyan: #21e6ff;
+  --cyan-soft: #74f5ff;
+  --gold: #ffd166;
+  --gold-dark: #9b6b16;
+  --wood: #5a321b;
+  --wood-light: #a86632;
+  --cream: #fff3d0;
+  --red: #ff5577;
+  --green: #5dffb1;
+  --muted: rgba(220, 235, 245, 0.62);
+}
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.level02-page {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  padding: 0 20px;
+  color: #fff;
+  background:
+    radial-gradient(circle at 50% 15%, rgba(21, 117, 157, 0.2), transparent 32%),
+    radial-gradient(circle at 15% 80%, rgba(255, 173, 66, 0.08), transparent 25%),
+    linear-gradient(180deg, #061827 0%, #020812 100%);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.level02-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(33, 230, 255, 0.025) 50%,
+      transparent 100%
+    );
+  background-size: 100% 5px;
+  opacity: 0.35;
+}
+
+.level02-page > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================================================
+   STARS / OCEAN ATMOSPHERE
+   ========================================================= */
+
+.pirate-stars,
+.pirate-stars::before,
+.pirate-stars::after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.pirate-stars {
+  opacity: 0.8;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,.9) 0 1px, transparent 1.5px),
+    radial-gradient(circle, rgba(255,209,102,.65) 0 1px, transparent 1.5px),
+    radial-gradient(circle, rgba(116,245,255,.55) 0 1px, transparent 1.5px);
+  background-size: 130px 130px, 190px 190px, 250px 250px;
+  background-position: 20px 30px, 80px 100px, 140px 50px;
+  animation: starDrift 25s linear infinite;
+}
+
+.pirate-stars::before {
+  content: "";
+  background:
+    radial-gradient(circle at 20% 70%, rgba(0, 220, 255, 0.08), transparent 18%),
+    radial-gradient(circle at 80% 35%, rgba(255, 209, 102, 0.08), transparent 16%);
+}
+
+.pirate-stars::after {
+  content: "";
+  background:
+    linear-gradient(
+      110deg,
+      transparent 0%,
+      rgba(255,255,255,.04) 48%,
+      transparent 52%
+    );
+  background-size: 700px 700px;
+  animation: oceanSweep 9s linear infinite;
+}
+
+@keyframes starDrift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-80px, 60px, 0);
+  }
+}
+
+@keyframes oceanSweep {
+  from {
+    transform: translateX(-300px);
+  }
+
+  to {
+    transform: translateX(300px);
+  }
+}
+
+/* =========================================================
+   INTRO SCREEN
+   ========================================================= */
+
+.level02-intro {
+  width: min(920px, 100%);
+  min-height: 100vh;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 55px 0;
+}
+
+.pirate-flag {
+  font-size: 58px;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 0 15px rgba(255, 209, 102, .3));
+  animation: flagFloat 2.5s ease-in-out infinite;
+}
+
+@keyframes flagFloat {
+  0%, 100% {
+    transform: rotate(-3deg) translateY(0);
+  }
+
+  50% {
+    transform: rotate(3deg) translateY(-8px);
+  }
+}
+
+.treasure-island {
+  position: relative;
+  width: 280px;
+  height: 130px;
+  margin-bottom: 22px;
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at 50% 42%, #d8a451 0 30%, #8b592b 31% 55%, transparent 56%);
+  filter: drop-shadow(0 20px 25px rgba(0,0,0,.5));
+}
+
+.treasure-island::after {
+  content: "";
+  position: absolute;
+  width: 310px;
+  height: 65px;
+  left: -15px;
+  bottom: 5px;
+  border-radius: 50%;
+  background: rgba(7, 79, 108, .45);
+  z-index: -1;
+}
+
+.island-moon {
+  position: absolute;
+  top: -5px;
+  right: 18px;
+  font-size: 28px;
+  color: var(--gold);
+  text-shadow: 0 0 16px rgba(255,209,102,.8);
+}
+
+.island-palm {
+  position: absolute;
+  left: 36px;
+  top: -14px;
+  font-size: 55px;
+  transform: rotate(-7deg);
+}
+
+.treasure-chest {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  font-size: 45px;
+  filter: drop-shadow(0 0 12px rgba(255, 209, 102, .45));
+  animation: chestGlow 1.8s ease-in-out infinite;
+}
+
+@keyframes chestGlow {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(-5px) scale(1.06);
+  }
+}
+
+.level02-kicker {
+  margin: 0 0 12px;
+  color: var(--cyan);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  text-shadow: 0 0 12px rgba(33, 230, 255, .6);
+}
+
+.level02-intro h1,
+.treasure-complete h1 {
+  margin: 0;
+  font-size: clamp(42px, 8vw, 78px);
+  line-height: .9;
+  font-weight: 1000;
+  letter-spacing: -3px;
+  text-transform: uppercase;
+  text-shadow:
+    0 3px 0 #162332,
+    0 0 25px rgba(33, 230, 255, .12);
+}
+
+.level02-intro h1 span,
+.treasure-complete h1 span {
+  display: block;
+  color: var(--gold);
+  text-shadow:
+    0 3px 0 #563c0e,
+    0 0 22px rgba(255, 209, 102, .28);
+}
+
+.level02-description {
+  width: min(650px, 100%);
+  margin: 22px auto 28px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* =========================================================
+   MISSION RULES
+   ========================================================= */
+
+.mission-rules {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin: 5px 0 28px;
+}
+
+.mission-rules > div {
+  width: 120px;
+  padding: 14px 10px;
+  border: 1px solid rgba(255, 209, 102, .18);
+  border-radius: 14px;
+  background: rgba(11, 25, 38, .72);
+  box-shadow:
+    inset 0 0 20px rgba(255, 209, 102, .025),
+    0 10px 25px rgba(0,0,0,.2);
+}
+
+.mission-rules span {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.mission-rules strong {
+  display: block;
+  color: #fff;
+  font-size: 21px;
+}
+
+.mission-rules small {
+  display: block;
+  margin-top: 4px;
+  color: rgba(255,255,255,.4);
+  font-size: 7px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+}
+
+/* =========================================================
+   START BUTTON
+   ========================================================= */
+
+.start-voyage-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-width: 285px;
+  padding: 17px 26px;
+  border: 1px solid rgba(255, 209, 102, .75);
+  border-radius: 12px;
+  color: #17100a;
+  background: linear-gradient(135deg, #ffe28b, #ffbd38);
+  font-size: 12px;
+  font-weight: 1000;
+  letter-spacing: 2px;
+  cursor: pointer;
+  box-shadow:
+    0 0 20px rgba(255, 209, 102, .2),
+    inset 0 1px 0 rgba(255,255,255,.65);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.start-voyage-button:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 0 35px rgba(255, 209, 102, .35),
+    0 15px 35px rgba(0,0,0,.3);
+}
+
+.start-voyage-button span {
+  font-size: 16px;
+}
+
+.warning-text {
+  margin-top: 15px;
+  color: rgba(255,255,255,.3);
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+/* =========================================================
+   GAME HUD
+   ========================================================= */
+
+.gameplay02-screen {
+  padding-top: 22px;
+}
+
+.level02-hud {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.hud-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 1000;
+  letter-spacing: 2px;
+  text-shadow: 0 0 12px rgba(255,209,102,.35);
+}
+
+.hud-title span {
+  font-size: 22px;
+}
+
+.hud-stats {
+  display: flex;
+  gap: 10px;
+}
+
+.hud-stat {
+  min-width: 82px;
+  padding: 9px 13px;
+  border: 1px solid rgba(33, 230, 255, .2);
+  border-radius: 9px;
+  background: rgba(5, 18, 29, .8);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 900;
+  text-align: center;
+}
+
+/* =========================================================
+   MAP PROGRESS
+   ========================================================= */
+
+.map-progress {
+  width: min(850px, 100%);
+  margin: 32px auto 20px;
+}
+
+.map-progress-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  color: rgba(255,255,255,.45);
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+}
+
+.map-progress-label span:first-child {
+  color: var(--gold);
+}
+
+.map-progress-track {
+  position: relative;
+  height: 7px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255,255,255,.08);
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.6);
+}
+
+.map-progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #0ecde8, #ffd166);
+  box-shadow: 0 0 14px rgba(255,209,102,.45);
+  transition: width .4s ease;
+}
+
+/* =========================================================
+   GAME CARD
+   ========================================================= */
+
+.pirate-game-card {
+  position: relative;
+  width: min(850px, 100%);
+  margin: 0 auto;
+  padding: 42px 42px 34px;
+  border: 1px solid rgba(255, 209, 102, .2);
+  border-radius: 20px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(17, 37, 51, .96),
+      rgba(5, 15, 24, .97)
+    );
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.4),
+    inset 0 1px 0 rgba(255,255,255,.04);
+  overflow: hidden;
+}
+
+.pirate-game-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      115deg,
+      transparent 30%,
+      rgba(255,255,255,.025) 50%,
+      transparent 70%
+    );
+  background-size: 600px 100%;
+  animation: cardSweep 8s linear infinite;
+}
+
+@keyframes cardSweep {
+  from {
+    background-position: -600px 0;
+  }
+
+  to {
+    background-position: 600px 0;
+  }
+}
+
+.map-pin {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  font-size: 25px;
+  filter: drop-shadow(0 0 8px rgba(255,209,102,.35));
+}
+
+.question-kicker {
+  margin: 0 0 12px;
+  color: var(--cyan);
+  font-size: 8px;
+  font-weight: 1000;
+  letter-spacing: 3px;
+}
+
+.pirate-game-card h2 {
+  position: relative;
+  margin: 0 auto 25px;
+  max-width: 680px;
+  color: #fff;
+  font-size: clamp(20px, 3vw, 30px);
+  line-height: 1.35;
+  text-align: center;
+}
+
+/* =========================================================
+   ARRAY / MAP GEMS
+   ========================================================= */
+
+.treasure-array {
+  display: flex;
+  justify-content: center;
+  gap: 9px;
+  margin: 0 auto 18px;
+  flex-wrap: wrap;
+}
+
+.map-gem {
+  position: relative;
+  min-width: 82px;
+  padding: 12px 14px 14px;
+  border: 1px solid rgba(33, 230, 255, .3);
+  border-radius: 10px;
+  background: linear-gradient(145deg, #0b293b, #06131f);
+  box-shadow:
+    inset 0 0 15px rgba(33,230,255,.04),
+    0 7px 15px rgba(0,0,0,.25);
+}
+
+.gem-index {
+  display: block;
+  margin-bottom: 5px;
+  color: rgba(116,245,255,.55);
+  font-size: 7px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.map-gem strong {
+  color: var(--gold);
+  font-size: 19px;
+}
+
+.pirate-help {
+  margin: 15px auto 22px;
+  color: rgba(255,255,255,.42);
+  font-size: 10px;
+  text-align: center;
+}
+
+/* =========================================================
+   ANSWERS
+   ========================================================= */
+
+.pirate-answer-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.pirate-answer {
+  position: relative;
+  min-height: 65px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 12px 16px;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 12px;
+  color: #fff;
+  background: rgba(8, 22, 34, .9);
+  cursor: pointer;
+  text-align: left;
+  transition:
+    transform .18s ease,
+    border-color .18s ease,
+    background .18s ease,
+    box-shadow .18s ease;
+}
+
+.pirate-answer:hover:not(:disabled) {
+  transform: translateY(-3px);
+  border-color: rgba(255, 209, 102, .55);
+  background: rgba(30, 42, 48, .95);
+  box-shadow: 0 10px 22px rgba(0,0,0,.25);
+}
+
+.pirate-answer:disabled {
+  cursor: default;
+}
+
+.answer-number {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 7px;
+  color: var(--cyan);
+  border: 1px solid rgba(33,230,255,.2);
+  background: rgba(33,230,255,.06);
+  font-size: 10px;
+  font-weight: 1000;
+}
+
+.pirate-answer strong {
+  font-size: 15px;
+}
+
+.answer-correct {
+  border-color: rgba(93,255,177,.75) !important;
+  background: rgba(47, 255, 164, .08) !important;
+  box-shadow:
+    0 0 22px rgba(93,255,177,.14),
+    inset 0 0 18px rgba(93,255,177,.04);
+  animation: treasureCorrect .55s ease;
+}
+
+.answer-correct .answer-number {
+  color: #061d13;
+  background: var(--green);
+  border-color: var(--green);
+}
+
+.answer-wrong {
+  border-color: rgba(255,85,119,.75) !important;
+  background: rgba(255,85,119,.08) !important;
+  animation: pirateWrong .42s ease;
+}
+
+.answer-wrong .answer-number {
+  color: #fff;
+  background: rgba(255,85,119,.35);
+  border-color: rgba(255,85,119,.7);
+}
+
+@keyframes treasureCorrect {
+  0% {
+    transform: scale(.97);
+  }
+
+  60% {
+    transform: scale(1.02);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes pirateWrong {
+  0%, 100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-7px);
+  }
+
+  75% {
+    transform: translateX(7px);
+  }
+}
+
+/* =========================================================
+   FEEDBACK
+   ========================================================= */
+
+.pirate-feedback {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  margin-top: 18px;
+  padding: 15px 17px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.pirate-feedback.correct {
+  border-color: rgba(93,255,177,.3);
+  background: rgba(93,255,177,.06);
+}
+
+.pirate-feedback.wrong {
+  border-color: rgba(255,85,119,.3);
+  background: rgba(255,85,119,.06);
+}
+
+.feedback-icon {
+  font-size: 22px;
+}
+
+.pirate-feedback strong {
+  display: block;
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.pirate-feedback p {
+  margin: 5px 0 0;
+  color: rgba(255,255,255,.58);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   NEXT BUTTON
+   ========================================================= */
+
+.next-map-button {
+  display: block;
+  margin: 18px auto 0;
+  padding: 13px 23px;
+  border: 1px solid rgba(255,209,102,.5);
+  border-radius: 9px;
+  color: #1b1205;
+  background: linear-gradient(135deg, #ffe18a, #ffb82e);
+  font-size: 9px;
+  font-weight: 1000;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  box-shadow: 0 0 18px rgba(255,209,102,.14);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.next-map-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 28px rgba(255,209,102,.3);
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.pirate-game-footer {
+  width: min(850px, 100%);
+  margin: 24px auto 30px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,.07);
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  color: rgba(255,255,255,.25);
+  font-size: 7px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+}
+
+/* =========================================================
+   COMPLETION
+   ========================================================= */
+
+.treasure-complete {
+  width: min(700px, 100%);
+  min-height: 100vh;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 50px 0;
+}
+
+.completion-icon {
+  font-size: 75px;
+  margin-bottom: 15px;
+  filter: drop-shadow(0 0 22px rgba(255,209,102,.45));
+  animation: treasureFloat 2s ease-in-out infinite;
+}
+
+@keyframes treasureFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+}
+
+.treasure-complete > p:not(.level02-kicker) {
+  max-width: 560px;
+  margin: 20px auto;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.final-reward {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 220px;
+  padding: 20px 30px;
+  border: 1px solid rgba(255,209,102,.35);
+  border-radius: 15px;
+  background: rgba(255,209,102,.06);
+  box-shadow:
+    0 0 30px rgba(255,209,102,.1),
+    inset 0 0 20px rgba(255,209,102,.03);
+}
+
+.final-reward span {
+  font-size: 22px;
+}
+
+.final-reward strong {
+  margin-top: 5px;
+  color: var(--gold);
+  font-size: 28px;
+}
+
+.final-reward small {
+  margin-top: 5px;
+  color: rgba(255,255,255,.35);
+  font-size: 7px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.completion-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.replay-button,
+.arena-button {
+  padding: 12px 18px;
+  border-radius: 9px;
+  font-size: 8px;
+  font-weight: 1000;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.replay-button {
+  color: var(--gold);
+  border: 1px solid rgba(255,209,102,.35);
+  background: rgba(255,209,102,.06);
+}
+
+.arena-button {
+  color: #07141c;
+  border: 1px solid rgba(33,230,255,.5);
+  background: var(--cyan);
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .level02-page {
+    padding: 0 14px;
+  }
+
+  .pirate-game-card {
+    padding: 32px 18px 24px;
+  }
+
+  .pirate-answer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mission-rules {
+    gap: 7px;
+  }
+
+  .mission-rules > div {
+    width: 100px;
+  }
+
+  .level02-hud {
+    align-items: flex-start;
+  }
+
+  .hud-stats {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .pirate-game-footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .level02-intro h1,
+  .treasure-complete h1 {
+    font-size: 42px;
+  }
+
+  .treasure-array {
+    gap: 6px;
+  }
+
+  .map-gem {
+    min-width: 65px;
+    padding: 10px;
+  }
+
+  .map-gem strong {
+    font-size: 16px;
+  }
+
+  .completion-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .replay-button,
+  .arena-button {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}

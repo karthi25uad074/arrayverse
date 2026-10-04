@@ -1,0 +1,1172 @@
+/* =========================================================
+   ARRAYVERSE PLAYGROUND
+   CLEAN ISOLATED STYLES
+========================================================= */
+
+.pg-page {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  min-height: 100vh;
+
+  box-sizing: border-box;
+
+  padding: 110px 5% 70px;
+
+  overflow-x: hidden;
+
+  color: #ffffff;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(0, 246, 255, 0.08),
+      transparent 32%
+    ),
+    #03070d;
+}
+
+
+/* =========================================================
+   HUB
+========================================================= */
+
+.pg-hub {
+  width: min(1200px, 100%);
+  margin: 0 auto;
+}
+
+
+/* ---------- HEADER ---------- */
+
+.pg-hub-header {
+  width: min(850px, 100%);
+
+  margin: 0 auto;
+
+  text-align: center;
+}
+
+.pg-eyebrow {
+  display: inline-block;
+
+  margin-bottom: 18px;
+
+  color: #00f6ff;
+
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 3px;
+
+  text-shadow:
+    0 0 12px rgba(0, 246, 255, 0.5);
+}
+
+.pg-hub-header h1 {
+  margin: 0;
+
+  font-size: clamp(42px, 7vw, 76px);
+
+  line-height: 0.95;
+
+  font-weight: 1000;
+
+  letter-spacing: -4px;
+}
+
+.pg-hub-header h1 span {
+  display: block;
+
+  margin-top: 8px;
+
+  color: #00f6ff;
+
+  text-shadow:
+    0 0 18px rgba(0, 246, 255, 0.4),
+    0 0 45px rgba(0, 246, 255, 0.12);
+}
+
+.pg-hub-header p {
+  width: min(620px, 100%);
+
+  margin: 24px auto 0;
+
+  color: rgba(220, 235, 245, 0.52);
+
+  font-size: 13px;
+
+  line-height: 1.8;
+}
+
+.pg-hub-status {
+  width: fit-content;
+
+  margin: 24px auto 0;
+
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 9px 15px;
+
+  border: 1px solid rgba(0, 246, 255, 0.2);
+
+  border-radius: 999px;
+
+  background: rgba(0, 246, 255, 0.035);
+
+  color: rgba(220, 250, 255, 0.62);
+
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+}
+
+.pg-status-dot {
+  width: 7px;
+  height: 7px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #65ffc4;
+
+  box-shadow:
+    0 0 7px #65ffc4,
+    0 0 15px rgba(101, 255, 196, 0.6);
+
+  animation: pgDotPulse 1.6s ease-in-out infinite;
+}
+
+@keyframes pgDotPulse {
+  50% {
+    opacity: 0.45;
+    transform: scale(0.75);
+  }
+}
+
+
+/* =========================================================
+   LAB GRID
+========================================================= */
+
+.pg-lab-grid {
+  width: 100%;
+
+  margin-top: 60px;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 22px;
+}
+
+
+/* =========================================================
+   LAB CARD
+========================================================= */
+
+.pg-lab-card {
+  position: relative;
+
+  min-width: 0;
+  min-height: 390px;
+
+  box-sizing: border-box;
+
+  padding: 32px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(0, 246, 255, 0.14);
+
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(8, 24, 35, 0.96),
+      rgba(3, 9, 15, 0.99)
+    );
+
+  color: #ffffff;
+
+  text-align: left;
+
+  isolation: isolate;
+}
+
+
+/* clickable train */
+
+button.pg-lab-card {
+  appearance: none;
+
+  font: inherit;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+button.pg-lab-card:hover {
+  transform: translateY(-9px);
+
+  border-color: rgba(0, 246, 255, 0.55);
+
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.45),
+    0 0 45px rgba(0, 246, 255, 0.08);
+}
+
+button.pg-lab-card:active {
+  transform: translateY(-4px) scale(0.99);
+}
+
+
+/* glow */
+
+.pg-card-glow {
+  position: absolute;
+
+  width: 270px;
+  height: 270px;
+
+  top: -130px;
+  right: -100px;
+
+  border-radius: 50%;
+
+  background: rgba(0, 246, 255, 0.12);
+
+  filter: blur(65px);
+
+  pointer-events: none;
+
+  z-index: -1;
+}
+
+
+/* icon */
+
+.pg-lab-icon {
+  width: 72px;
+  height: 72px;
+
+  display: grid;
+  place-items: center;
+
+  margin-bottom: 25px;
+
+  border: 1px solid rgba(0, 246, 255, 0.2);
+
+  border-radius: 18px;
+
+  background: rgba(0, 246, 255, 0.05);
+
+  font-size: 35px;
+
+  box-shadow:
+    inset 0 0 20px rgba(0, 246, 255, 0.04);
+}
+
+
+/* number */
+
+.pg-lab-number {
+  color: rgba(0, 246, 255, 0.5);
+
+  font-size: 8px;
+  font-weight: 1000;
+
+  letter-spacing: 2px;
+}
+
+
+/* title */
+
+.pg-lab-card h2 {
+  margin: 9px 0 12px;
+
+  font-size: 21px;
+  font-weight: 1000;
+
+  letter-spacing: 0.5px;
+}
+
+
+/* description */
+
+.pg-lab-card p {
+  max-width: 330px;
+
+  min-height: 58px;
+
+  margin: 0;
+
+  color: rgba(220, 235, 245, 0.48);
+
+  font-size: 11px;
+
+  line-height: 1.7;
+}
+
+
+/* tags */
+
+.pg-tags {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 6px;
+
+  margin-top: 20px;
+}
+
+.pg-tags span {
+  padding: 6px 9px;
+
+  border: 1px solid rgba(0, 246, 255, 0.14);
+
+  border-radius: 5px;
+
+  background: rgba(0, 246, 255, 0.035);
+
+  color: rgba(0, 246, 255, 0.65);
+
+  font-size: 7px;
+  font-weight: 1000;
+
+  letter-spacing: 1px;
+}
+
+
+/* enter */
+
+.pg-enter {
+  position: absolute;
+
+  left: 32px;
+  right: 32px;
+  bottom: 27px;
+
+  padding-top: 16px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  color: #00f6ff;
+
+  font-size: 8px;
+  font-weight: 1000;
+
+  letter-spacing: 1.5px;
+}
+
+.pg-enter span {
+  font-size: 18px;
+
+  transition: transform 0.25s ease;
+}
+
+.pg-train-card:hover .pg-enter span {
+  transform: translateX(7px);
+}
+
+
+/* =========================================================
+   LOCKED CARDS
+========================================================= */
+
+.pg-locked-card {
+  opacity: 0.48;
+
+  filter: saturate(0.25);
+}
+
+.pg-lock-layer {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 10;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(2, 6, 11, 0.28),
+      rgba(2, 6, 11, 0.7)
+    );
+
+  pointer-events: none;
+}
+
+.pg-lock {
+  font-size: 27px;
+
+  filter: grayscale(1);
+}
+
+.pg-lock-layer span {
+  padding: 7px 12px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.04);
+
+  color: rgba(255, 255, 255, 0.5);
+
+  font-size: 8px;
+  font-weight: 1000;
+
+  letter-spacing: 2px;
+}
+
+
+/* =========================================================
+   HUB FOOTER
+========================================================= */
+
+.pg-hub-footer {
+  margin-top: 65px;
+
+  padding-top: 20px;
+
+  border-top: 1px solid rgba(0, 246, 255, 0.13);
+
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 25px;
+}
+
+.pg-hub-footer div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 6px;
+}
+
+.pg-hub-footer span {
+  color: rgba(0, 246, 255, 0.4);
+
+  font-size: 7px;
+  font-weight: 1000;
+
+  letter-spacing: 2px;
+}
+
+.pg-hub-footer strong {
+  color: rgba(255, 255, 255, 0.35);
+
+  font-size: 9px;
+
+  letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   TRAIN PAGE
+========================================================= */
+
+.pg-train-page {
+  padding-top: 90px;
+}
+
+
+/* =========================================================
+   TRAIN HEADER
+========================================================= */
+
+.pg-train-header {
+  width: min(1250px, 100%);
+
+  margin: 0 auto 20px;
+
+  display: grid;
+
+  grid-template-columns: 1fr auto 1fr;
+
+  align-items: center;
+
+  gap: 20px;
+}
+
+.pg-back-button {
+  width: fit-content;
+
+  padding: 10px 15px;
+
+  border: 1px solid rgba(0, 246, 255, 0.18);
+
+  border-radius: 8px;
+
+  background: rgba(0, 246, 255, 0.035);
+
+  color: rgba(220, 250, 255, 0.65);
+
+  font-size: 8px;
+  font-weight: 1000;
+
+  letter-spacing: 1.5px;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.pg-back-button:hover {
+  color: #00f6ff;
+
+  border-color: rgba(0, 246, 255, 0.45);
+
+  transform: translateX(-3px);
+}
+
+.pg-train-heading {
+  text-align: center;
+}
+
+.pg-train-heading span {
+  color: rgba(0, 246, 255, 0.45);
+
+  font-size: 7px;
+  font-weight: 1000;
+
+  letter-spacing: 2px;
+}
+
+.pg-train-heading h1 {
+  margin: 5px 0 0;
+
+  font-size: 23px;
+
+  font-weight: 1000;
+}
+
+.pg-live-indicator {
+  justify-self: end;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 8px 12px;
+
+  border: 1px solid rgba(101, 255, 196, 0.18);
+
+  border-radius: 999px;
+
+  color: rgba(101, 255, 196, 0.7);
+
+  font-size: 8px;
+  font-weight: 1000;
+
+  letter-spacing: 1.5px;
+}
+
+
+/* =========================================================
+   3D TRAIN SCENE
+========================================================= */
+
+.pg-train-scene {
+  width: min(1250px, 100%);
+
+  height: min(65vh, 650px);
+
+  min-height: 470px;
+
+  margin: 0 auto;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(0, 246, 255, 0.18);
+
+  border-radius: 22px;
+
+  background: #02060b;
+
+  box-shadow:
+    0 0 50px rgba(0, 246, 255, 0.05),
+    inset 0 0 50px rgba(0, 246, 255, 0.025);
+}
+
+
+/* Important:
+   prevent old generic canvas styles from breaking scene */
+
+.pg-train-scene canvas {
+  display: block !important;
+
+  width: 100% !important;
+  height: 100% !important;
+}
+
+
+/* =========================================================
+   LIVE ARRAY
+========================================================= */
+
+.pg-array-panel {
+  width: min(1250px, 100%);
+
+  margin: 24px auto 0;
+
+  padding: 21px;
+
+  box-sizing: border-box;
+
+  border: 1px solid rgba(0, 246, 255, 0.14);
+
+  border-radius: 18px;
+
+  background: rgba(5, 14, 22, 0.82);
+}
+
+.pg-panel-title {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 17px;
+}
+
+.pg-panel-title span {
+  color: #00f6ff;
+
+  font-size: 9px;
+  font-weight: 1000;
+
+  letter-spacing: 2px;
+}
+
+.pg-panel-title strong {
+  color: rgba(255, 255, 255, 0.45);
+
+  font-size: 9px;
+}
+
+.pg-array-row {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  width: 100%;
+
+  overflow-x: auto;
+
+  padding-bottom: 3px;
+}
+
+.pg-engine-cell {
+  flex: 0 0 auto;
+
+  padding: 17px 19px;
+
+  border: 1px solid rgba(0, 246, 255, 0.42);
+
+  border-radius: 10px;
+
+  background: rgba(0, 246, 255, 0.07);
+
+  color: #00f6ff;
+
+  font-size: 10px;
+  font-weight: 1000;
+}
+
+.pg-array-cell {
+  flex: 0 0 auto;
+
+  min-width: 82px;
+
+  padding: 10px 15px;
+
+  border: 1px solid rgba(0, 246, 255, 0.18);
+
+  border-radius: 10px;
+
+  background: #07131d;
+
+  color: #ffffff;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.pg-array-cell:hover {
+  transform: translateY(-3px);
+
+  border-color: #00f6ff;
+}
+
+.pg-array-cell small {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: #00f6ff;
+
+  font-size: 7px;
+  font-weight: 900;
+}
+
+.pg-array-cell strong {
+  font-size: 18px;
+}
+
+.pg-array-cell.pg-found {
+  border-color: #65ffc4;
+
+  background: rgba(50, 255, 180, 0.1);
+
+  box-shadow:
+    0 0 22px rgba(50, 255, 180, 0.2);
+
+  animation: pgFoundPulse 0.9s ease-in-out infinite;
+}
+
+@keyframes pgFoundPulse {
+  50% {
+    transform: translateY(-4px) scale(1.04);
+  }
+}
+
+
+/* =========================================================
+   OPERATIONS
+========================================================= */
+
+.pg-operation-grid {
+  width: min(1250px, 100%);
+
+  margin: 24px auto 0;
+
+  display: grid;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 14px;
+}
+
+.pg-operation-card {
+  min-width: 0;
+
+  min-height: 265px;
+
+  box-sizing: border-box;
+
+  padding: 21px;
+
+  border: 1px solid rgba(0, 246, 255, 0.12);
+
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(8, 22, 32, 0.96),
+      rgba(3, 9, 15, 0.98)
+    );
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.pg-operation-card:hover {
+  transform: translateY(-4px);
+
+  border-color: rgba(0, 246, 255, 0.3);
+}
+
+.pg-operation-number {
+  color: rgba(0, 246, 255, 0.4);
+
+  font-size: 8px;
+  font-weight: 1000;
+
+  letter-spacing: 2px;
+}
+
+.pg-operation-card h3 {
+  margin: 8px 0;
+
+  font-size: 14px;
+
+  letter-spacing: 0.8px;
+}
+
+.pg-operation-card p {
+  min-height: 37px;
+
+  margin: 0 0 14px;
+
+  color: rgba(220, 235, 245, 0.42);
+
+  font-size: 9px;
+
+  line-height: 1.6;
+}
+
+.pg-operation-card input,
+.pg-operation-card select {
+  display: block;
+
+  width: 100%;
+
+  height: 38px;
+
+  box-sizing: border-box;
+
+  margin-bottom: 9px;
+
+  padding: 0 11px;
+
+  border: 1px solid rgba(0, 246, 255, 0.16);
+
+  border-radius: 8px;
+
+  outline: none;
+
+  background: #050d14;
+
+  color: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 10px;
+}
+
+.pg-operation-card input::placeholder {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.pg-operation-card input:focus,
+.pg-operation-card select:focus {
+  border-color: #00f6ff;
+
+  box-shadow:
+    0 0 12px rgba(0, 246, 255, 0.1);
+}
+
+.pg-operation-card select option {
+  background: #07131d;
+
+  color: #ffffff;
+}
+
+.pg-operation-button {
+  display: block;
+
+  width: 100%;
+
+  height: 38px;
+
+  border: 1px solid rgba(0, 246, 255, 0.3);
+
+  border-radius: 8px;
+
+  background: rgba(0, 246, 255, 0.05);
+
+  color: #00f6ff;
+
+  font-family: inherit;
+
+  font-size: 8px;
+  font-weight: 1000;
+
+  letter-spacing: 1px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.pg-operation-button:hover {
+  background: rgba(0, 246, 255, 0.14);
+
+  transform: translateY(-2px);
+}
+
+.pg-operation-button.pg-delete {
+  color: #ff718b;
+
+  border-color: rgba(255, 80, 110, 0.3);
+}
+
+.pg-operation-button.pg-update {
+  color: #c49cff;
+
+  border-color: rgba(170, 100, 255, 0.3);
+}
+
+.pg-operation-button.pg-search {
+  color: #65ffc4;
+
+  border-color: rgba(70, 255, 180, 0.3);
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.pg-status-panel {
+  width: min(1250px, 100%);
+
+  margin: 20px auto 0;
+
+  padding: 17px 20px;
+
+  box-sizing: border-box;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  border: 1px solid rgba(0, 246, 255, 0.12);
+
+  border-radius: 14px;
+
+  background: rgba(5, 14, 22, 0.75);
+}
+
+.pg-status-panel > div {
+  flex: 1;
+}
+
+.pg-status-panel span {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: rgba(0, 246, 255, 0.4);
+
+  font-size: 7px;
+  font-weight: 1000;
+
+  letter-spacing: 2px;
+}
+
+.pg-status-panel strong {
+  color: #e7fbff;
+
+  font-size: 10px;
+}
+
+.pg-status-panel button {
+  flex-shrink: 0;
+
+  padding: 9px 13px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  border-radius: 7px;
+
+  background: rgba(255, 255, 255, 0.03);
+
+  color: rgba(255, 255, 255, 0.5);
+
+  font-family: inherit;
+
+  font-size: 7px;
+  font-weight: 1000;
+
+  letter-spacing: 1px;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   CONCEPT
+========================================================= */
+
+.pg-concept {
+  width: min(1250px, 100%);
+
+  margin: 35px auto 0;
+
+  padding: 27px 0 0;
+
+  border-top: 1px solid rgba(0, 246, 255, 0.12);
+}
+
+.pg-concept-heading span {
+  color: #00f6ff;
+
+  font-size: 8px;
+  font-weight: 1000;
+
+  letter-spacing: 2px;
+}
+
+.pg-concept-heading h2 {
+  margin: 8px 0 23px;
+
+  font-size: 22px;
+
+  font-weight: 1000;
+}
+
+.pg-concept-grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 11px;
+}
+
+.pg-concept-grid div {
+  padding: 15px;
+
+  border: 1px solid rgba(0, 246, 255, 0.1);
+
+  border-radius: 10px;
+
+  background: rgba(0, 246, 255, 0.025);
+}
+
+.pg-concept-grid strong {
+  display: block;
+
+  color: #00f6ff;
+
+  font-size: 9px;
+}
+
+.pg-concept-grid small {
+  display: block;
+
+  margin-top: 6px;
+
+  color: rgba(255, 255, 255, 0.38);
+
+  font-size: 8px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+  .pg-lab-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pg-operation-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pg-concept-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+@media (max-width: 700px) {
+
+  .pg-page {
+    padding: 90px 4% 45px;
+  }
+
+  .pg-hub-header h1 {
+    font-size: 43px;
+
+    letter-spacing: -2px;
+  }
+
+  .pg-lab-grid {
+    margin-top: 42px;
+  }
+
+  .pg-lab-card {
+    min-height: 350px;
+  }
+
+  .pg-train-header {
+    grid-template-columns: 1fr;
+
+    align-items: start;
+  }
+
+  .pg-train-heading {
+    order: -1;
+
+    text-align: left;
+  }
+
+  .pg-live-indicator {
+    justify-self: start;
+  }
+
+  .pg-train-scene {
+    height: 55vh;
+
+    min-height: 390px;
+
+    border-radius: 16px;
+  }
+
+  .pg-operation-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pg-concept-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pg-status-panel {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .pg-status-panel button {
+    width: 100%;
+  }
+
+  .pg-hub-footer {
+    flex-direction: column;
+  }
+}
