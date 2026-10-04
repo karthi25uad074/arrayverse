@@ -12,53 +12,62 @@ import Level06 from "./pages/Challenges/Level06";
 import Level07 from "./pages/Challenges/Level07";
 import Level08 from "./pages/Challenges/Level08";
 import Playground from "./pages/Playground/Playground";
+
 function App() {
   const path = window.location.pathname;
+  const route = path.replace(/^\/arrayverse/, "") || "/";
 
-  if (path === "/learn") {
+  if (route === "/learn") {
     return <Learn />;
   }
 
-  if (path.startsWith("/lesson/")) {
+  if (route.startsWith("/lesson/")) {
     return <Lesson />;
   }
 
-  if (path === "/practice") {
+  if (route === "/practice") {
     return <Practice />;
   }
 
-  if (path === "/challenges/level-01") {
+  if (route === "/challenges/level-01") {
     return <Level01 />;
   }
 
-  if (path === "/challenges/level-02") {
-  return <Level02 />;
-}
+  if (route === "/challenges/level-02") {
+    return <Level02 />;
+  }
 
-if (path === "/challenges/level-03") {
-  return <Level03 />;
-}
-if (path === "/challenges/level-04") {
-  return <Level04 />;
-}
-  if (path === "/challenges/level-05") {
+  if (route === "/challenges/level-03") {
+    return <Level03 />;
+  }
+
+  if (route === "/challenges/level-04") {
+    return <Level04 />;
+  }
+
+  if (route === "/challenges/level-05") {
     return <Level05 />;
   }
-  if (path === "/challenges/level-06") {
-  return <Level06 />;
-}
-if (path === "/challenges/level-07") {
-  return <Level07 />;
-}
-if (path === "/challenges/level-08") {
-  return <Level08 />;
-}
-  if (path === "/challenges") {
+
+  if (route === "/challenges/level-06") {
+    return <Level06 />;
+  }
+
+  if (route === "/challenges/level-07") {
+    return <Level07 />;
+  }
+
+  if (route === "/challenges/level-08") {
+    return <Level08 />;
+  }
+
+  if (route === "/challenges") {
     return <Challenges />;
   }
-  if (path === "/playground") {
-  return <Playground />;
-}
+
+  if (route === "/playground") {
+    return <Playground />;
+  }
 
   return <Home />;
 }
