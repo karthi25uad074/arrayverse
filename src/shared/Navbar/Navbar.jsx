@@ -1,11 +1,22 @@
 import "./Navbar.css";
 
 function Navbar() {
-
   const currentPath = window.location.pathname;
 
+  const basePath = "/arrayverse";
+
+  const getRoute = () => {
+    if (currentPath === basePath || currentPath === `${basePath}/`) {
+      return "/";
+    }
+
+    return currentPath.replace(basePath, "") || "/";
+  };
+
+  const route = getRoute();
+
   const isActive = (path) => {
-    return currentPath === path ? "active" : "";
+    return route === path ? "active" : "";
   };
 
   return (
@@ -27,48 +38,43 @@ function Navbar() {
 
       </div>
 
-
       {/* NAVIGATION */}
       <nav className="navbar-links">
 
         <a
-          href="/"
+          href={`${basePath}/`}
           className={`nav-link ${isActive("/")}`}
         >
           <span className="nav-number">01</span>
           <span>HOME</span>
         </a>
 
-
         <a
-          href="/learn"
+          href={`${basePath}/learn`}
           className={`nav-link ${isActive("/learn")}`}
         >
           <span className="nav-number">02</span>
           <span>LEARN</span>
         </a>
 
-
         <a
-          href="/practice"
+          href={`${basePath}/practice`}
           className={`nav-link ${isActive("/practice")}`}
         >
           <span className="nav-number">03</span>
           <span>PRACTICE</span>
         </a>
 
-
         <a
-          href="/challenges"
+          href={`${basePath}/challenges`}
           className={`nav-link ${isActive("/challenges")}`}
         >
           <span className="nav-number">04</span>
           <span>CHALLENGES</span>
         </a>
 
-
         <a
-          href="/playground"
+          href={`${basePath}/playground`}
           className={`nav-link ${isActive("/playground")}`}
         >
           <span className="nav-number">05</span>
@@ -76,7 +82,6 @@ function Navbar() {
         </a>
 
       </nav>
-
 
       {/* SYSTEM STATUS */}
       <div className="navbar-status">
@@ -95,7 +100,6 @@ function Navbar() {
         </div>
 
       </div>
-
 
       {/* MOBILE MENU */}
       <button
